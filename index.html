@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Bilingue - Apprendre l'Arabe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* PAGE D'ACCUEIL - STYLE MILLE ET UNE NUITS */
+        .home-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #1a1a2e 100%);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .home-page.hidden {
+            display: none;
+        }
+
+        /* Décoration ornementale - Mille et une nuits */
+        .home-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 0%, rgba(218, 165, 32, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(218, 165, 32, 0.8);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            box-shadow: 0 0 2px rgba(218, 165, 32, 0.6);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(218, 165, 32, 0.1);
+            border: 3px solid rgba(218, 165, 32, 0.5);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(218, 165, 32, 0.3), inset 0 0 40px rgba(218, 165, 32, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .home-logo img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.4));
+        }
+
+        .home-title {
+            color: #daa520;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.5), 0 2px 10px rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-subtitle {
+            color: #e6d5b8;
+            font-size: 1.2em;
+            font-style: italic;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-description {
+            color: #f0e68c;
+            font-size: 1em;
+            max-width: 600px;
+            line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            font-style: italic;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .home-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #daa520, #d4a017);
+            color: #1a1a2e;
+            border: 2px solid rgba(218, 165, 32, 0.8);
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(218, 165, 32, 0.3);
+            font-family: 'Georgia', serif;
+            letter-spacing: 1px;
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(135deg, #f0e68c, #daa520);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(218, 165, 32, 0.5);
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        }
+
+        .home-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Ornements décoratifs */
+        .ornament {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #daa520, transparent);
+            margin: 10px 0;
+            border-radius: 2px;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #17a2a2 0%, #0d5555 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header.hidden {
+            display: none;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .header-subtitle {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .btn-back {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .progress-bar {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-bottom: 2px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .progress-bar.hidden {
+            display: none;
+        }
+
+        .progress-info {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 12px;
+            background-color: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 30%, #FF6347 60%, #DC143C 100%);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.6);
+        }
+
+        .badges-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 3px solid #ddd;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .badge.unlocked {
+            border-color: #17a2a2;
+            background: linear-gradient(135deg, #e8f4f5, #d4e8e8);
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(23, 162, 162, 0.3);
+        }
+
+        .badge.locked {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .day-selector {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-bottom: 2px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .day-selector.hidden {
+            display: none;
+        }
+
+        .day-select {
+            padding: 10px 15px;
+            border: 2px solid #17a2a2;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            background: white;
+            color: #333;
+        }
+
+        .day-select:focus {
+            outline: none;
+            background-color: #17a2a2;
+            color: white;
+        }
+
+        .help-btn {
+            background-color: #17a2a2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .help-btn:hover {
+            background-color: #0d5555;
+        }
+
+        .nav-tabs {
+            display: flex;
+            border-bottom: 3px solid #17a2a2;
+            background-color: #f9f9f9;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-tabs.hidden {
+            display: none;
+        }
+
+        .nav-tab {
+            flex: 1;
+            min-width: 90px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            background-color: #e8f5f5;
+        }
+
+        .nav-tab.active {
+            color: white;
+            background-color: #17a2a2;
+            border-bottom: 4px solid #0d5555;
+        }
+
+        .section-header {
+            background-color: #17a2a2;
+            color: white;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .content.hidden {
+            display: none;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .presentation-box {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #17a2a2;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .presentation-image {
+            font-size: 80px;
+            text-align: center;
+        }
+
+        .presentation-info h2 {
+            color: #17a2a2;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .presentation-info p {
+            margin: 10px 0;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .word-with-harakah {
+            font-size: 48px;
+            direction: rtl;
+            text-align: right;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .transcription {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .audio-btn {
+            background-color: #17a2a2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .audio-btn:hover {
+            background-color: #0d5555;
+            transform: scale(1.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #17a2a2;
+            box-shadow: 0 4px 12px rgba(23, 162, 162, 0.2);
+        }
+
+        .card-letter {
+            font-size: 48px;
+            color: #333;
+            margin: 15px 0;
+            direction: rtl;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .card-transcription {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .colored-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+
+        .dot-red { background-color: #e74c3c; }
+        .dot-green { background-color: #27ae60; }
+        .dot-blue { background-color: #3498db; }
+        .dot-orange { background-color: #f39c12; }
+        .dot-purple { background-color: #9b59b6; }
+
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .form-box {
+            background: white;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .form-label {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .form-letter {
+            font-size: 40px;
+            color: #333;
+            direction: rtl;
+            margin: 10px 0;
+        }
+
+        .elongation-section {
+            background: #e8f4f5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #17a2a2;
+            margin-bottom: 20px;
+        }
+
+        .elongation-title {
+            color: #17a2a2;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .elongation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .elongation-table th,
+        .elongation-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #17a2a2;
+        }
+
+        .elongation-table th {
+            background-color: #17a2a2;
+            color: white;
+            font-weight: 600;
+        }
+
+        .elongation-table td {
+            background-color: white;
+        }
+
+        .elongation-letter {
+            font-size: 28px;
+            color: #333;
+            direction: rtl;
+        }
+
+        .elongation-trans {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .elongation-exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .elongation-exercise-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .elongation-exercise-card:hover {
+            border-color: #17a2a2;
+            box-shadow: 0 4px 12px rgba(23, 162, 162, 0.2);
+        }
+
+        .elongation-word {
+            font-size: 32px;
+            color: #333;
+            direction: rtl;
+            margin: 10px 0;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .elongation-type {
+            font-size: 11px;
+            color: #17a2a2;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .elongation-reveal {
+            font-size: 11px;
+            color: #999;
+            margin-top: 8px;
+            min-height: 20px;
+            transition: all 0.3s;
+        }
+
+        .elongation-reveal.hidden {
+            display: none;
+        }
+
+        .reveal-btn {
+            background-color: #17a2a2;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .reveal-btn:hover {
+            background-color: #0d5555;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .exercise-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .exercise-card:hover {
+            border-color: #17a2a2;
+            box-shadow: 0 4px 12px rgba(23, 162, 162, 0.2);
+        }
+
+        .exercise-image {
+            font-size: 50px;
+            margin: 10px 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exercise-word {
+            font-size: 32px;
+            color: #333;
+            direction: rtl;
+            margin: 10px 0;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exercise-reveal {
+            font-size: 11px;
+            color: #999;
+            margin-top: 8px;
+            min-height: 20px;
+            transition: all 0.3s;
+        }
+
+        .exercise-reveal.hidden {
+            display: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .nav-btn {
+            background-color: #17a2a2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background-color: #0d5555;
+        }
+
+        .nav-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .page-counter {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 650px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #17a2a2;
+        }
+
+        .modal-content h2 {
+            color: #17a2a2;
+            margin-top: 0;
+            margin-bottom: 20px;
+            clear: both;
+        }
+
+        .modal-content h3 {
+            color: #0d5555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .modal-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content li {
+            margin-bottom: 10px;
+        }
+
+        .motivational-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-box {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .forms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .exercise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .home-title {
+                font-size: 36px;
+            }
+
+            .home-logo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PAGE D'ACCUEIL -->
+        <div class="home-page" id="homePage">
+            <div class="stars" id="starsContainer"></div>
+            <div class="home-content">
+                <div class="ornament"></div>
+                <div class="home-logo" id="homeLogoImg"><img src="data:image/png;base64,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" alt="Horizon Bilingue Logo"></div>
+                <div class="ornament"></div>
+                <div class="home-title">✨ Horizon Bilingue ✨</div>
+                <div class="home-subtitle">Apprendre à lire </div>
+                <div class="home-description">Embarque dans une aventure incroyable de 30 jours pour maîtriser l'alphabet et lire la prestigieuse Sourate Al-Fatiha</div>
+                <div class="ornament"></div>
+                <div class="home-buttons">
+                    <button class="home-btn" onclick="enterApp()">🌅 ENTRÉE</button>
+                    <button class="home-btn" onclick="openGuide()">📖 GUIDE</button>
+                </div>
+                <div class="ornament"></div>
+            </div>
+        </div>
+
+        <!-- HEADER -->
+        <div class="header hidden" id="header">
+            <button class="btn-back" onclick="backToHome()">← Accueil</button>
+            <div class="header-center">
+                <div class="header-title">Horizon Bilingue</div>
+                <div class="header-subtitle">Apprendre à lire en 29 jours !</div>
+            </div>
+            <div class="header-logo" id="headerLogoImg"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAP9klEQVR4nL2aWYxlx1mAv1rOOXffunt6md0zPR4vY48949gxxEkUiKLkBZIQggJILCEib/CKROAF8YSEQCDxmCiBKBFCBCkxFjEhsR3bsT3OZGJ71h7P9HT33L7dffezVRUPt2/79u1ueyYylHR0lqtT9X/1/3/V///nCucc72dzd9ihEEK8n+OK9wNkL+HHH+8l+/sB9QuDjAs/3s/WvRCIsd9H5R5n+EWh7hpkLwDn3DZhnXMIIXDWYoxBe97Ws1GA8fOWYHcJdFcgoxDjAEIInHMYa8G5gSbSlJ9u9FlrdzlTCShNTGCNASFQQgzeGYMZ09Ydw8i7hRgK7pzDWou1FmctrXaHZquFcJbUGKy1tNtt6mFKIzLUV1ex1pKmKThHGEWEcbzVz2i/I5N0x7Os7wZgNxCEoN9q8uJql8jPcf/qDaZnpomMIUlitPAIPIVE0O/3EUCnucGb5Gi32jw5kaFQrmCtRUq5QyuAg/fWzruC7KaFHdpwYJzD1JewJ8/w04Vl7g+vobJ5es11zORRIhyNxhrC8xFpzGIquT1Zw978GUzcS5IkW6Y5CiOlHDVb924we/rIXhBDAGsHJpTEMWmasrhwjQtdR/HhJwhfeppZr4swPZZliV5sOOBa6EyRpsmizn6Cm6/8mMfKgoNH70FKhe/7KK1RUiI3jyHQqJb2gnkvjeyAMMZgrCUJ+4Rhn24/ZGVlhV6nwQxN2mtTFMoph4ohq94sh0QGJQWaMpn2LUzis7R0ienem2wwQf+SYWZ6mmIuRyabxXkBSg0mV0o5FH7binfHGnGDBrDliEOINE2J+n2uLNfphD2i5StMlmKO3FNhIu9x47WfczGZwTz4MWx+H8pTOAcYA71VuPAsh6IF5h9/kGZkuXZ1nZU1RTB9D7XqBEcmKgTZLFprlFJbmhmF2k0rO0DGTWpoRsYYkiQhThLWVm7xg5sblE6dJWvaHNM32Xf9HN2XX+ZC9RH41O/jS4VJY6xzCEAIiVIesXDIZ77OyaXnKZ49w+qRR7gYzdHVJZoXzvHR/SUmZubwPQ/P87ZgxheCcRh9JxDDZTOKIprNDW4u3uSgWSF5a4V6XGPt3jN4CxcpvR0S/OGXyGUgScFTme3TZiGnoP1rv8urf/4C+opiY/88XHqVudw6+0SHm7cmUUFAuVzdsYKNmdo259+mkVGQUU2kaUoYhrRaTa5evkip0OLR+SIbr5zn+nOvsdSCeLVB66nPIM4+SXNhEdfvkPR6kCaD3V0qglwekclRPrIfe/4cB3/4DeLqFNMFx/GnzlB89EFeudym3S5xz/F5SqUKmUxmm5kNNTOulS2Q3bRhjMEYQxRFdDptrl65jK/rfOAen/r3X2DtlfNEzQ79BBpBhUbtILGXhUwOcgX8XA7P83BAmFqII1y/ixd1ySc9ptZvUOitoYXDK+WYePQBpj72JC9fjYnSfRw9dpxioUgQBGitkFLtaWK7goyaU5wkhP0ei9ev0V67yKmTBRbP32Jl1WBr++nvO0pcm8PmS2jPGwywubPbNEXZBOkssZOkUuNrhVMaKUA6i+t3kOsr6OUFMhuLHJiSzJzcx+tvtChV59l/+CiZXB7f89Ba7+b8O0HGteGsJQ773FpZ5o0bi2T310iCKquNCBv2iRu3UfWbqPVlMu06Qdgik/QIbEwgLFkTAQ7jBD0r6ZqBnSfSJ/WziFyBfn4CW53G1uYwkzOoXJHKVB4XNnH1Ng8cnGNu3xR+kAUpt61koyuY2BR+V99Yb3e5fHuNa40NlB9TTZuELz5PcPkCXmOJwCYEgaSQ8chnfXzfQ3sennCYJKVfqJETFt9EpFFIKjRaK1JjSZKUME4Iw5g4jEnjlNAp4to0nWMP4D3xy9x2JZzLc2SqxvGJElPlwp6+Mr5qbcVUcZJwo95AxBG15nXO3Ccovn2FlbU3iGwLV81htUZqha8lKInVCmFTGtX9XPvo79GZvIcDX/szpoOYi5/8EnF5gtJ//BP3rl7ABlmk8vH9LC5rkcaQTQ2SkKB5helkktbBI7z6BgSVLAu3E/KBppTPb5NzCCNHIbZWSWuRQnBiZoISMZWSpZbVrF5aotcOiY0ldmBxKOHQEjwl8JUkcAnLxQPYsx8kqE7RSwyLukz6yC/B8ZM0RBYtIFACT4nBu9IBjsQ54tTQa/VZvXiLiZxPpQwFE/LQ/kl8rQdpwi5NjucYo37SDUMa62vUahpTbxAt13FxDDiEFGgl8ZQcnKXAkwKhFDZNET2LMAkIhTMW2U8QoQVrQSq0lOjNPoaHkAJwuDgmWqlj6g1qVUVjY41OGO4I90e3jV3zkSFIEsekSZ9qQdFfqpN2urjNxEhsCqKkQEmJEgKlJFIInJQgJQ6BEIM4PGbwDlKhpMRXAk9JlBoEilpu/i4EzhhMp0t/qU61qEiTPkkcb4HsqpHdIIZHHMUIkZBVjmh1HRfFW9mflMNDogSD683MT8t3utViADNsSa9HqxeybjVxkuJFncEEbPaHFOAcNoqJVjfIKocQCXEU75Z4vTPOOMA795YkSVDKoi0k7S7OpDgcCIkQIIVgOLYUcut+qAUYXOtNDQqTYu//ABcP/QZ2+iCi2yT3k/9k5tx30UptAgscDmcMSbuLNilKQZIkOGcZlXc0fNHjZFv3DowxKAWkKSZOcHYQALohxKYpCN6ZdbFZNdnSgAUcxMaSFY59n/k8iQQbgycP0DzxAE2/yLEffg3pZ0EYwA3CmjhGGIOScrCvud1lFULsnY+4kYvxmFkAxlmifkiQ83Eq2PabwG29IwFrHblAkyq4/dI5kpe/T7i+Ru1Xfp3ZM2dY+/DnufXKM8xFdSJGJsKNdPoeTQ9ncZR0uGsqpTBW4JRC+R5CSpxU2G6bxU/8EfHMIY597x+ZdRa36W5uBAJASEGQybDQWMf/3lc5ffFZZv1BZvnafyzRmf97cpUCvakjmKuLIDNb76nAw2mFMaDUrvn81r3e7eHw2vM8jBGkSuEV86AUKgpZCyqkj3+KzPwcF994jelrz2C9CtY5nAMtN3dcZ3FxH7G4wqG/+2NOJYvUKiVSBLFJKWloMVg/BhGFQwg3MFWl8Yp5UqkxxuB5/g75dvjIqFZGc2Q/8HHOo28gmKwiMxlca53OzDzBzCy9m23c1Qvg+xhjkEJg3UA3DlBCEJ35OLq3RtFTvK09rpsU4xytMKX94EeplLLUVzsESwsI7eGMHYwf+ASTVfpG4JyHH/g78vcdpjXehtGl7/t4Xo6NTovDs1PoYp6kLoj9HIEWCGvIpT1cILEIJALjHKEdFN48TyE//Tv0gM6wgro1BpQddA1sfPcbPNRZIs1mEUmM0B66kCczO8ntjsHzSvi+vy2+2gEihBDD3X2UWEqJ53kUS2VWG2scPV4l2DeBXV4i21ol7YTkJ8vU732Sxk/+hWqtAhLqvYjmh8/gKUvYjmhfXxgEes6RAsYNBXGoqI15/mnuO/9dsrkMaZwiEEjfIzMziZqssXo5oVgq43nejsrKyMSLHRoZBdHao1KpsFr3aBpNef4Q8c0lKgtvc+uN19n3occpf/ZLXJueoX7jZ6TSo3fyCTKP/SrSk9Sf+Vfmnv0q+ybKeBjaiSM0m0UN5yibPiUi0myGME4R1iKURhULlOYP0zSaXh/mDlTQ2tuhkT19BN5Zl+Vm7J/L5ykWJ7m2uMSjJw7TvHSdyvo6t775t9ya+xv2H5vBfuYLxBEICSUPUgc3n3uZwy9+i9NzWYRIBhtuMFiKjXUYY4msppsokjhBGItAoLIZsgdmyZ84zMW3+xSLs+Ty+d3ykJ0+spd5KaXw/YCp6WmuXKpTn9VMPnIftxobnFi4wet/9WVe//hvU3noMXLFEtYa4tVlktd+yOFXv8PxvKVrNFgziN8QmyCW1DiS1GCMRaQGnEMGGbzJGpNnH6CeaNY34Nj8NL4foJTa06xgl1R3vI4VxzG9XpebN26wsXaFD54u0f/JT2m+8DJRfYNryy0WXYCYniPQgomkxQHZo1wqkEqNsAarPHAOYdKBnxhLmqQ4J8BYMAbp+3gTNSafOE3u7IO8cK5FZeIYBw4cJJfL4/seSuk9CxDvWnwYLQN1Oi2uXrlMoG5z4nCR1y87yj/4NqCpH36U2o++TSFp4wBXKGGFQKcRst/m+m9+hV7qOP7Nr2AzxUEoH+Rw3TbCOVSlhj9Vo/bwCQpnT/HaQkrsZjh69BiFYokgGGhk3LxGQUZ9RGzWinY4ved5ZLN5Dhw8wo1rES9c7NJ/7HOkC+cwusj6J7+M/tG/YU99hM78QwQvPI1nYhrzj5HvrdNcXiZuN7n95Ocw1SquE1J69RncU5+lMzFH8forlE8cZ/HUWXoUWAxXePjIHLl8YWu12s0/7qiuNV6gS5KEMAxpb6zxs6sLiFNPol0IUtJbb+O/+B3ij/wWvZ//mPL8aeL/+hb+F/+Uha9/g4MHZkijiOXn/pupP/lL4quXyV89R+fhj9Cr32T2wH5Ud5m13DGitTq1yQmOrN/gwfvuHWysd1Bt3JaPbNnbiDaGh9aaIAioVGvMzM6BH/DW8//D4lvnyVXK+I9/CNltsv/1p0mDIlF5ivT6CuV//utB9GoNRzMx9GPsv/8D2eP3k+/XOZos0BM5VpoGb+M2+sZbWKVIrMX3vW0yvFvJdEditU1dI0BKKbT2yGaz5HN5VhcXmdGCcrfD2mqDQvsSOgudP/gLCksvcbLYxrbqnH7qNL7t00lS4k98AZIWwae/SK95hShTpnH4KTrnX2JCKbSA40cPkzTXKRcLCLETYDeIHaY12vaqyFtr6fdDbtxaoloq0Gq3ePPmEr7rQbKBK+a5by4Aqcn0G0znNRu9lF4KKYLbHcNa20JkaHUlmVyF+aOHKJSqICTlcpEwjKlVK2itd3wj2Q3iPUE2zzuKEoNNE5I4ZqMX8dytdUxqCOIuJuqTKEW/tcZsWWCCLOVog47M0uoZssaQ8bIEuRL5UgmVK3CkXMD3PTxPAwLP05uR8PvwoWe3VWz4nc85N/jkrD20Z5FAPtA4v0S2WsE5R1KuspGAiCM2/GlyGCjChoWT1YCGyHC9E5K22hSDgKOFHIl1aCUx1iHvAuJdQcZh3Ob3vdHcXgrwtSK1DpTEpQnaz7DWC3FJzGQ2YLZaYjF0pMYSxgl+2OPNtqIsOxQ9nzAxVDIeQmm02PlB9E4g4C6+s4+a2vA8NLWNTg9jLcVAkxpHu9cjCkNKhQL5fI5uP+TZqysEvuLMZJ5Gp8++UoFisUCCoJTNbAl9twB3DTIKMwoCoORAY6l1COcGZR0EZnNxEEIQJQlaCIIgQEq5mU1apBhcjwPcDcRdg4zDjAON3ju21wykFNuqIOOzv0su/n/3F44xgD3/VPNufe5VPBi5///5U81ubRxq5Pn2wfaQ8RcVflsf7wfIaNsLasfA74Pwo+1/ASPIphEzDe1kAAAAAElFTkSuQmCC" alt="Logo"></div>
+        </div>
+
+        <!-- BARRE DE PROGRESSION -->
+        <div class="progress-bar hidden" id="progressBar">
+            <div class="progress-info">📊 Progression: <span id="progressText">0/29 jours</span></div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="badges-container" id="badgesContainer"></div>
+        </div>
+
+        <!-- SÉLECTION JOUR -->
+        <div class="day-selector hidden" id="daySelector">
+            <label for="day-select" style="font-weight: 600;">📚 Sélectionner un jour:</label>
+            <select id="day-select" class="day-select" onchange="selectDay(this.value)">
+                <option value="">-- Choisir un jour --</option>
+            </select>
+        </div>
+
+        <!-- ONGLETS -->
+        <div class="nav-tabs hidden" id="navTabs"></div>
+
+        <!-- CONTENU -->
+        <div class="content hidden" id="content">
+            <div id="pages-container"></div>
+
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="previousPage()">◀ Précédent</button>
+                <span class="page-counter"><span id="page-num">1</span> / <span id="page-total">4</span></span>
+                <button class="nav-btn" onclick="nextPage()">Suivant ▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TUTORIEL -->
+    <div id="guideModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeGuide()">&times;</button>
+            <h2>🚀 Commence ton aventure arabe !</h2>
+            <h3>🎯 OBJECTIF FINAL : Lire la Sourate Al-Fatiha (الفاتحة) en arabe après 30 jours !</h3>
+            <p>La Fatiha est la première Sourate du Coran composée de 7 versets. Elle est la plus importante et la plus complète des Sourates. En 30 jours, tu seras capable de la lire entièrement, mot par mot, en arabe ! 🌟</p>
+
+            <div class="motivational-box">
+                ✨ Comment fonctionne ce programme ?
+            </div>
+
+            <h3>📅 Jours 1-29 et Jour 30</h3>
+            <ul>
+                <li><strong>Jours 1-29 :</strong> Tu apprends une nouvelle lettre ou un nouveau son chaque jour. C'est progressif, simple et motivant !</li>
+                <li><strong>Jour 30 :</strong> Tu lis la Sourate Al-Fatiha complète, mot par mot. Tu maitriseras tous les sons et les lettres !</li>
+                <li><strong>Chaque jour :</strong> Tu débloque un nouveau badge et tu progresses vers ta victoire finale ! 🏆</li>
+            </ul>
+
+            <div class="motivational-box">
+                🧭 Comment utiliser l'application ?
+            </div>
+
+            <h3>🎮 Étapes à suivre</h3>
+            <ul>
+                <li>Clique sur ENTRÉE pour commencer.</li>
+                <li>Choisis le Jour dans le menu déroulant.</li>
+                <li>Lis la Présentation de la lettre du jour.</li>
+                <li>Regarde les Harakate (les points et traits au-dessus des lettres).</li>
+                <li>Visualise les Formes des lettres en contexte.</li>
+                <li>Fais les Exercices : lis, écoute, puis clique sur Afficher pour voir la traduction.</li>
+                <li>Au Jour 30 : entraîne-toi à lire la Fatiha complète ! 🌟</li>
+            </ul>
+
+            <div class="motivational-box">
+                La Fatiha est le début de ton voyage avec le Coran. Chaque lettre est une lumière. Chaque jour te rapproche de ton objectif ! ✨🌙
+            </div><button class="modal-close" onclick="closeGuide()">&times;</button>
+            <h2>🚀 Commence ton aventure arabe !</h2>
+            
+            <div class="motivational-box">
+                Dans 29 jours, tu maîtriseras tout l'alphabet arabe ! 🎉
+            </div>
+
+            <h3>🎯 Ton objectif</h3>
+            <p>Apprendre une lettre par jour. C'est simple, progressif et motivant. Chaque jour débloque un nouveau badge et te rapproche de la victoire finale !</p>
+
+            <h3>📅 Ton organisation</h3>
+            <ul>
+                <li><strong>Chaque jour :</strong> 15-20 minutes d'apprentissage</li>
+                <li><strong>Ton rythme :</strong> Va à ton rythme, pas de pression</li>
+                <li><strong>La régularité gagne :</strong> Mieux vaut 10 min chaque jour que 2h une fois par semaine</li>
+                <li><strong>Valide avant de continuer :</strong> Assure-toi de maîtriser chaque jour avant le suivant</li>
+            </ul>
+
+            <h3>📚 Ce que tu vas apprendre chaque jour</h3>
+            <ul>
+                <li><strong>Présentation :</strong> Découvre la lettre avec une image marquante</li>
+                <li><strong>Harakate :</strong> Apprends les 5 voyelles (a, ou, i, rien, in)</li>
+                <li><strong>Formes :</strong> Vois comment elle s'écrit dans les mots</li>
+                <li><strong>Prolongations (à partir du jour 3) :</strong> Maîtrise les sons longs</li>
+                <li><strong>Exercice :</strong> Entraîne-toi avec des mots réels et des images</li>
+            </ul>
+
+            <h3>🔊 Comment bien utiliser l'application</h3>
+            <ul>
+                <li><strong>Écoute beaucoup :</strong> Clique sur les boutons 🔊 autant que tu veux</li>
+                <li><strong>Répète à haute voix :</strong> C'est crucial pour la prononciation</li>
+                <li><strong>D'abord essaie :</strong> Essaie de lire avant de cliquer "Afficher"</li>
+                <li><strong>Mémorise :</strong> Écris sur un papier ce que tu apprends</li>
+                <li><strong>Amusement :</strong> L'arabe doit être amusant, pas une corvée !</li>
+            </ul>
+
+            <h3>🏆 Tes récompenses</h3>
+            <ul>
+                <li>✅ <strong>Badge quotidien :</strong> Chaque jour, tu déverrouilles un badge unique</li>
+                <li>🎖️ <strong>Jalons spéciaux :</strong> Les jours 10, 20, 29 ont des récompenses spéciales</li>
+                <li>⭐ <strong>Barre de progression :</strong> Vois ta progression augmenter chaque jour</li>
+                <li>🏅 <strong>Accomplissement final :</strong> Tu seras fier d'avoir terminé les 29 jours !</li>
+            </ul>
+
+            <div class="motivational-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                Tu as tout ce qu'il faut. Fais juste un pas chaque jour. Bonne chance ! 🚀
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add detailed logging for debugging
+        console.log("Script loading...");
+
+        // Make sure DOM is loaded before running functions
+        function ensureDOMReady() {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initApp);
+            } else {
+                initApp();
+            }
+        }
+
+        // Improved enterApp with error handling
+        function enterApp() {
+            console.log("enterApp() called");
+            try {
+                const homeElement = document.getElementById('homePage');
+                const headerElement = document.getElementById('header');
+                const progressBar = document.getElementById('progressBar');
+                const daySelector = document.getElementById('daySelector');
+                const navTabs = document.getElementById('navTabs');
+                const contentElement = document.getElementById('content');
+
+                console.log("Elements to toggle:", {
+                    homePage: !!homeElement,
+                    header: !!headerElement,
+                    progressBar: !!progressBar,
+                    daySelector: !!daySelector,
+                    navTabs: !!navTabs,
+                    content: !!contentElement
+                });
+
+                if (homeElement) homeElement.classList.add('hidden');
+                if (headerElement) headerElement.classList.remove('hidden');
+                if (progressBar) progressBar.classList.remove('hidden');
+                if (daySelector) daySelector.classList.remove('hidden');
+                if (navTabs) navTabs.classList.remove('hidden');
+                if (contentElement) contentElement.classList.remove('hidden');
+
+                console.log("enterApp() completed successfully");
+                renderDay(1);
+            } catch (err) {
+                console.error("Error in enterApp():", err);
+            }
+        }
+
+        // Improved openGuide with error handling
+        function openGuide() {
+            console.log("openGuide() called");
+            try {
+                const modal = document.getElementById('guideModal');
+                if (modal) {
+                    modal.classList.add('active');
+                    console.log("Guide modal shown");
+                } else {
+                    console.error("guideModal not found");
+                    alert("Guide\n\nDans 29 jours, tu maîtriseras les 29 lettres de l'alphabet arabe!\n\nChaque jour:\n- Une nouvelle lettre\n- Des exercices progressifs\n- Des badges pour te motiver\n\nBon courage!");
+                }
+            } catch (err) {
+                console.error("Error in openGuide():", err);
+            }
+        }
+
+        // Improved closeGuide
+        function closeGuide() {
+            console.log("closeGuide() called");
+            try {
+                const modal = document.getElementById('guideModal');
+                if (modal) modal.classList.remove('active');
+            } catch (err) {
+                console.error("Error in closeGuide():", err);
+            }
+        }
+
+        // Original script content (keeping all original functions)
+        
+        // IMAGE BASE64 DU LOGO
+        const logoBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCI..."; // Remplacé par le vrai base64
+
+        // UTILISER L'IMAGE
+        function setLogos() {
+            const homeLogoImg = document.getElementById('homeLogoImg');
+            const headerLogoImg = document.getElementById('headerLogoImg');
+            
+            homeLogoImg.style.backgroundImage = `url('${logoBase64}')`;
+            headerLogoImg.style.backgroundImage = `url('${logoBase64}')`;
+        }
+
+        // CRÉER LES ÉTOILES
+        function createStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // ENTRER DANS L'APP
+        function enterApp() {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('header').classList.remove('hidden');
+            document.getElementById('progressBar').classList.remove('hidden');
+            document.getElementById('daySelector').classList.remove('hidden');
+            document.getElementById('navTabs').classList.remove('hidden');
+            document.getElementById('content').classList.remove('hidden');
+            
+            initializeApp();
+        }
+
+        // RETOUR ACCUEIL
+        function backToHome() {
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('header').classList.add('hidden');
+            document.getElementById('progressBar').classList.add('hidden');
+            document.getElementById('daySelector').classList.add('hidden');
+            document.getElementById('navTabs').classList.add('hidden');
+            document.getElementById('content').classList.add('hidden');
+        }
+
+        function openGuide() {
+            document.getElementById('guideModal').classList.add('active');
+        }
+
+        function closeGuide() {
+            document.getElementById('guideModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('guideModal');
+            if (event.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        const daysData = [
+            { dayNumber: 1, letter: 'ب', latinName: 'ba', exampleWord: 'بابا', exampleLatin: 'Baba', exampleImage: '👶', forms: { isolated: 'ب', beginning: 'بـ', middle: 'ـبـ', end: 'ـب' }, harakatExamples: [{ arabic: 'بَ', trans: 'ba' }, { arabic: 'بُ', trans: 'bou' }, { arabic: 'بِ', trans: 'bi' }, { arabic: 'بْ', trans: 'b' }, { arabic: 'بٍ', trans: 'bin' }], exerciseWords: [{ arabic: 'بَبَ', latin: 'baba', image: null }, { arabic: 'بِبِ', latin: 'bibi', image: null }, { arabic: 'بُبُ', latin: 'boubu', image: null }, { arabic: 'بَبُ', latin: 'babou', image: null }, { arabic: 'بِبُ', latin: 'bibou', image: null }, { arabic: 'بٍبِ', latin: 'binbi', image: null }] },
+            { dayNumber: 2, letter: 'ت', latinName: 'ta', exampleWord: 'تمر', exampleLatin: 'Tamr', exampleImage: '📅', forms: { isolated: 'ت', beginning: 'تـ', middle: 'ـتـ', end: 'ـت' }, harakatExamples: [{ arabic: 'تَ', trans: 'ta' }, { arabic: 'تُ', trans: 'tou' }, { arabic: 'تِ', trans: 'ti' }, { arabic: 'تْ', trans: 't' }, { arabic: 'تٍ', trans: 'tin' }], exerciseWords: [{ arabic: 'تَبَ', latin: 'taba', image: null }, { arabic: 'بَتَ', latin: 'bata', image: null }, { arabic: 'تِبِ', latin: 'tibi', image: null }, { arabic: 'تَتَ', latin: 'tata', image: null }, { arabic: 'بِتِ', latin: 'biti', image: null }, { arabic: 'تِتِ', latin: 'titi', image: null }] },
+            { dayNumber: 3, letter: 'ث', latinName: 'tha', exampleWord: 'ثمر', exampleLatin: 'Thamr', exampleImage: '🍇', forms: { isolated: 'ث', beginning: 'ثـ', middle: 'ـثـ', end: 'ـث' }, harakatExamples: [{ arabic: 'ثَا', trans: 'thaa' }, { arabic: 'ثُو', trans: 'thou' }, { arabic: 'ثِي', trans: 'thii' }, { arabic: 'ثْ', trans: 'th' }, { arabic: 'ثٍ', trans: 'thin' }], hasElongation: true, elongationExercises: [{ arabic: 'ثَا', trans: 'thaa', type: 'Fat7a' }, { arabic: 'ثُو', trans: 'thou', type: 'Damma' }, { arabic: 'ثِي', trans: 'thii', type: 'Kasra' }, { arabic: 'ثَاثِي', trans: 'thaathii', type: 'Combiné' }, { arabic: 'ثُوثِيَا', trans: 'thoothiaa', type: 'Combiné' }, { arabic: 'ثِيثَا', trans: 'thiithaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'ثَبَ', latin: 'thaba', image: '📖' }, { arabic: 'بَثَ', latin: 'batha', image: '🐝' }, { arabic: 'ثِبِ', latin: 'thibi', image: '🎭' }, { arabic: 'تَثَ', latin: 'tatha', image: '🔔' }, { arabic: 'ثَتَ', latin: 'thata', image: '🍌' }, { arabic: 'ثِثِ', latin: 'thithi', image: '⭐' }] },
+            { dayNumber: 4, letter: 'ن', latinName: 'nun', exampleWord: 'نمل', exampleLatin: 'Naml', exampleImage: '🐜', forms: { isolated: 'ن', beginning: 'نـ', middle: 'ـنـ', end: 'ـن' }, harakatExamples: [{ arabic: 'نَ', trans: 'na' }, { arabic: 'نُ', trans: 'nou' }, { arabic: 'نِ', trans: 'ni' }, { arabic: 'نْ', trans: 'n' }, { arabic: 'نٍ', trans: 'nin' }], hasElongation: true, elongationExercises: [{ arabic: 'نَا', trans: 'naa', type: 'Fat7a' }, { arabic: 'نُو', trans: 'nou', type: 'Damma' }, { arabic: 'نِي', trans: 'nii', type: 'Kasra' }, { arabic: 'نَانِي', trans: 'naanii', type: 'Combiné' }, { arabic: 'نُونِيَا', trans: 'nouniaa', type: 'Combiné' }, { arabic: 'نِينَا', trans: 'niinaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'نَبْتَ', latin: 'nabta', image: '🌳' }, { arabic: 'بِنْتٌ', latin: 'bintun', image: '👧' }, { arabic: 'ثَبِتَ', latin: 'thabita', image: '🪨' }, { arabic: 'تَنْبِيهٌ', latin: 'tanbih', image: '🔔' }, { arabic: 'نَتْوَ', latin: 'natwa', image: '📍' }, { arabic: 'بَنَاءٌ', latin: 'bana', image: '🏗️' }] },
+            { dayNumber: 5, letter: 'ي', latinName: 'ya', exampleWord: 'يد', exampleLatin: 'Yad', exampleImage: '✋', forms: { isolated: 'ي', beginning: 'يـ', middle: 'ـيـ', end: 'ـي' }, harakatExamples: [{ arabic: 'يَ', trans: 'ya' }, { arabic: 'يُ', trans: 'you' }, { arabic: 'يِ', trans: 'yi' }, { arabic: 'يْ', trans: 'y' }, { arabic: 'يٍ', trans: 'yin' }], hasElongation: true, elongationExercises: [{ arabic: 'يَا', trans: 'yaa', type: 'Fat7a' }, { arabic: 'يُو', trans: 'you', type: 'Damma' }, { arabic: 'يِي', trans: 'yii', type: 'Kasra' }, { arabic: 'يَايِي', trans: 'yaayii', type: 'Combiné' }, { arabic: 'يُويِيَا', trans: 'youwiaa', type: 'Combiné' }, { arabic: 'يِييَا', trans: 'yiiyaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'يَدٌ', latin: 'yad', image: '✋' }, { arabic: 'بَيْتٌ', latin: 'bayt', image: '🏠' }, { arabic: 'ثَوْبٌ', latin: 'thawb', image: '👗' }, { arabic: 'نَيِّلٌ', latin: 'nayl', image: '🦁' }, { arabic: 'يَبِيسٌ', latin: 'yabis', image: '🏜️' }, { arabic: 'بِيَانٌ', latin: 'bayan', image: '📜' }] },
+            { dayNumber: 6, letter: 'م', latinName: 'mim', exampleWord: 'ملك', exampleLatin: 'Malik', exampleImage: '👑', forms: { isolated: 'م', beginning: 'مـ', middle: 'ـمـ', end: 'ـم' }, harakatExamples: [{ arabic: 'مَ', trans: 'ma' }, { arabic: 'مُ', trans: 'mou' }, { arabic: 'مِ', trans: 'mi' }, { arabic: 'مْ', trans: 'm' }, { arabic: 'مٍ', trans: 'min' }], hasElongation: true, elongationExercises: [{ arabic: 'مَا', trans: 'maa', type: 'Fat7a' }, { arabic: 'مُو', trans: 'mou', type: 'Damma' }, { arabic: 'مِي', trans: 'mii', type: 'Kasra' }, { arabic: 'مَامِي', trans: 'maami', type: 'Combiné' }, { arabic: 'مُومِيَا', trans: 'moumiaa', type: 'Combiné' }, { arabic: 'مِيمَا', trans: 'miimaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'مَاءٌ', latin: 'maa', image: '💧' }, { arabic: 'مِيمٌ', latin: 'mim', image: '🔤' }, { arabic: 'يَمِينٌ', latin: 'yamin', image: '👉' }, { arabic: 'نِيَامٌ', latin: 'niyam', image: '😴' }, { arabic: 'تَمِيمٌ', latin: 'tamim', image: '💎' }, { arabic: 'بُطُومٌ', latin: 'butum', image: '🌲' }] },
+            { dayNumber: 7, letter: 'ش', latinName: 'shin', exampleWord: 'شمس', exampleLatin: 'Shams', exampleImage: '☀️', forms: { isolated: 'ش', beginning: 'شـ', middle: 'ـشـ', end: 'ـش' }, harakatExamples: [{ arabic: 'شَا', trans: 'shaa' }, { arabic: 'شُو', trans: 'shou' }, { arabic: 'شِي', trans: 'shii' }, { arabic: 'شْ', trans: 'sh' }, { arabic: 'شٍ', trans: 'shin' }], hasElongation: true, elongationExercises: [{ arabic: 'شَا', trans: 'shaa', type: 'Fat7a' }, { arabic: 'شُو', trans: 'shou', type: 'Damma' }, { arabic: 'شِي', trans: 'shii', type: 'Kasra' }, { arabic: 'شَاشِي', trans: 'shaashii', type: 'Combiné' }, { arabic: 'شُوشِيَا', trans: 'shoushiaa', type: 'Combiné' }, { arabic: 'شِيشَا', trans: 'shiishaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'شَمْسٌ', latin: 'shams', image: '☀️' }, { arabic: 'شِيْمَةٌ', latin: 'shima', image: '✨' }, { arabic: 'مَشَتٌ', latin: 'mashat', image: '🚶' }, { arabic: 'يَشِينُ', latin: 'yashin', image: '😔' }, { arabic: 'شَبِيبَةٌ', latin: 'shabiba', image: '🌙' }, { arabic: 'ثَيْشَمٌ', latin: 'thaysham', image: '🎪' }] },
+            { dayNumber: 8, letter: 'ج', latinName: 'jim', exampleWord: 'جمل', exampleLatin: 'Jamal', exampleImage: '🐪', forms: { isolated: 'ج', beginning: 'جـ', middle: 'ـجـ', end: 'ـج' }, harakatExamples: [{ arabic: 'جَا', trans: 'jaa' }, { arabic: 'جُو', trans: 'jou' }, { arabic: 'جِي', trans: 'jii' }, { arabic: 'جْ', trans: 'j' }, { arabic: 'جٍ', trans: 'jin' }], hasElongation: true, elongationExercises: [{ arabic: 'جَا', trans: 'jaa', type: 'Fat7a' }, { arabic: 'جُو', trans: 'jou', type: 'Damma' }, { arabic: 'جِي', trans: 'jii', type: 'Kasra' }, { arabic: 'جَاجِي', trans: 'jaajii', type: 'Combiné' }, { arabic: 'جُوجِيَا', trans: 'joujiaa', type: 'Combiné' }, { arabic: 'جِيجَا', trans: 'jiijaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'جَمَلٌ', latin: 'jamal', image: '🐪' }, { arabic: 'جَنْبٌ', latin: 'janb', image: '🦴' }, { arabic: 'شَجَرَةٌ', latin: 'shajara', image: '🌳' }, { arabic: 'نِجَايَةٌ', latin: 'nijaya', image: '⛑️' }, { arabic: 'جِيمٌ', latin: 'jim', image: '🔤' }, { arabic: 'مِجَنٌّ', latin: 'mijan', image: '🛡️' }] },
+            { dayNumber: 9, letter: 'ح', latinName: 'ha', exampleWord: 'حمار', exampleLatin: 'Himar', exampleImage: '🐴', forms: { isolated: 'ح', beginning: 'حـ', middle: 'ـحـ', end: 'ـح' }, harakatExamples: [{ arabic: 'حَا', trans: 'haa' }, { arabic: 'حُو', trans: 'hou' }, { arabic: 'حِي', trans: 'hii' }, { arabic: 'حْ', trans: 'h' }, { arabic: 'حٍ', trans: 'hin' }], hasElongation: true, elongationExercises: [{ arabic: 'حَا', trans: 'haa', type: 'Fat7a' }, { arabic: 'حُو', trans: 'hou', type: 'Damma' }, { arabic: 'حِي', trans: 'hii', type: 'Kasra' }, { arabic: 'حَاحِي', trans: 'haahii', type: 'Combiné' }, { arabic: 'حُوحِيَا', trans: 'houhiaa', type: 'Combiné' }, { arabic: 'حِيحَا', trans: 'hiihaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'حِمَارٌ', latin: 'himar', image: '🐴' }, { arabic: 'حَجٌّ', latin: 'hajj', image: '⛪' }, { arabic: 'حَشِيشٌ', latin: 'hashish', image: '🌾' }, { arabic: 'جِحَافٌ', latin: 'jihaf', image: '🦛' }, { arabic: 'حَيَاةٌ', latin: 'hayat', image: '💚' }, { arabic: 'شِحَاحٌ', latin: 'shihah', image: '🤑' }] },
+            { dayNumber: 10, letter: 'خ', latinName: 'kha', exampleWord: 'خيار', exampleLatin: 'Khiyar', exampleImage: '🥒', forms: { isolated: 'خ', beginning: 'خـ', middle: 'ـخـ', end: 'ـخ' }, harakatExamples: [{ arabic: 'خَا', trans: 'khaa' }, { arabic: 'خُو', trans: 'khou' }, { arabic: 'خِي', trans: 'khii' }, { arabic: 'خْ', trans: 'kh' }, { arabic: 'خٍ', trans: 'khin' }], hasElongation: true, elongationExercises: [{ arabic: 'خَا', trans: 'khaa', type: 'Fat7a' }, { arabic: 'خُو', trans: 'khou', type: 'Damma' }, { arabic: 'خِي', trans: 'khii', type: 'Kasra' }, { arabic: 'خَاخِي', trans: 'khaakhii', type: 'Combiné' }, { arabic: 'خُوخِيَا', trans: 'khoukhiaa', type: 'Combiné' }, { arabic: 'خِيخَا', trans: 'khiikhaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'خِيَارٌ', latin: 'khiyar', image: '🥒' }, { arabic: 'خَيْلٌ', latin: 'khayl', image: '🐎' }, { arabic: 'خَيْمَةٌ', latin: 'khayma', image: '⛺' }, { arabic: 'حَاخٌ', latin: 'hakh', image: '🌬️' }, { arabic: 'خِتَانٌ', latin: 'khitan', image: '✂️' }, { arabic: 'جَخٌّ', latin: 'jakh', image: '👔' }] },
+            { dayNumber: 11, letter: 'س', latinName: 'sin', exampleWord: 'سمك', exampleLatin: 'Samak', exampleImage: '🐠', forms: { isolated: 'س', beginning: 'سـ', middle: 'ـسـ', end: 'ـس' }, harakatExamples: [{ arabic: 'سَا', trans: 'saa' }, { arabic: 'سُو', trans: 'sou' }, { arabic: 'سِي', trans: 'sii' }, { arabic: 'سْ', trans: 's' }, { arabic: 'سٍ', trans: 'sin' }], hasElongation: true, elongationExercises: [{ arabic: 'سَا', trans: 'saa', type: 'Fat7a' }, { arabic: 'سُو', trans: 'sou', type: 'Damma' }, { arabic: 'سِي', trans: 'sii', type: 'Kasra' }, { arabic: 'سَاسِي', trans: 'saasii', type: 'Combiné' }, { arabic: 'سُوسِيَا', trans: 'sousiaa', type: 'Combiné' }, { arabic: 'سِيسَا', trans: 'siisaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'سَمَكٌ', latin: 'samak', image: '🐠' }, { arabic: 'سِيَاسَةٌ', latin: 'siasa', image: '🏛️' }, { arabic: 'سُحُبٌ', latin: 'suhub', image: '☁️' }, { arabic: 'جَسَدٌ', latin: 'jasad', image: '👤' }, { arabic: 'حَاسٌّ', latin: 'has', image: '👃' }, { arabic: 'شَاسِعٌ', latin: 'shasi', image: '🗻' }] },
+            { dayNumber: 12, letter: 'ص', latinName: 'sad', exampleWord: 'صورة', exampleLatin: 'Surah', exampleImage: '📷', forms: { isolated: 'ص', beginning: 'صـ', middle: 'ـصـ', end: 'ـص' }, harakatExamples: [{ arabic: 'صَا', trans: 'saa' }, { arabic: 'صُو', trans: 'sou' }, { arabic: 'صِي', trans: 'sii' }, { arabic: 'صْ', trans: 's' }, { arabic: 'صٍ', trans: 'sin' }], hasElongation: true, elongationExercises: [{ arabic: 'صَا', trans: 'saa', type: 'Fat7a' }, { arabic: 'صُو', trans: 'sou', type: 'Damma' }, { arabic: 'صِي', trans: 'sii', type: 'Kasra' }, { arabic: 'صَاصِي', trans: 'saasii', type: 'Combiné' }, { arabic: 'صُوصِيَا', trans: 'sousiaa', type: 'Combiné' }, { arabic: 'صِيصَا', trans: 'siisaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'صُورَةٌ', latin: 'surah', image: '📷' }, { arabic: 'صَبِيٌّ', latin: 'sabiun', image: '👦' }, { arabic: 'صِحَاحٌ', latin: 'sihah', image: '✅' }, { arabic: 'حَاصِلٌ', latin: 'hasil', image: '🎯' }, { arabic: 'جَاصِصٌ', latin: 'jasis', image: '💎' }, { arabic: 'سِصَالٌ', latin: 'sisal', image: '🧵' }] },
+            { dayNumber: 13, letter: 'ض', latinName: 'dad', exampleWord: 'ضفدع', exampleLatin: 'Difdaa', exampleImage: '🐸', forms: { isolated: 'ض', beginning: 'ضـ', middle: 'ـضـ', end: 'ـض' }, harakatExamples: [{ arabic: 'ضَا', trans: 'daa' }, { arabic: 'ضُو', trans: 'dou' }, { arabic: 'ضِي', trans: 'dii' }, { arabic: 'ضْ', trans: 'd' }, { arabic: 'ضٍ', trans: 'din' }], hasElongation: true, elongationExercises: [{ arabic: 'ضَا', trans: 'daa', type: 'Fat7a' }, { arabic: 'ضُو', trans: 'dou', type: 'Damma' }, { arabic: 'ضِي', trans: 'dii', type: 'Kasra' }, { arabic: 'ضَاضِي', trans: 'daadii', type: 'Combiné' }, { arabic: 'ضُوضِيَا', trans: 'doudiaa', type: 'Combiné' }, { arabic: 'ضِيضَا', trans: 'diidaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'ضِفْدَعٌ', latin: 'difdaa', image: '🐸' }, { arabic: 'ضُرُوسٌ', latin: 'duros', image: '🦷' }, { arabic: 'ضَحَايَا', latin: 'dhaya', image: '🐑' }, { arabic: 'صَضِيحٌ', latin: 'sadih', image: '🍳' }, { arabic: 'حَضِيرٌ', latin: 'hadir', image: '✔️' }, { arabic: 'شِضَاضٌ', latin: 'shidad', image: '⚡' }] },
+            { dayNumber: 14, letter: 'ط', latinName: 'ta', exampleWord: 'طعام', exampleLatin: 'Taaam', exampleImage: '🍽️', forms: { isolated: 'ط', beginning: 'طـ', middle: 'ـطـ', end: 'ـط' }, harakatExamples: [{ arabic: 'طَا', trans: 'taa' }, { arabic: 'طُو', trans: 'tou' }, { arabic: 'طِي', trans: 'tii' }, { arabic: 'طْ', trans: 't' }, { arabic: 'طٍ', trans: 'tin' }], hasElongation: true, elongationExercises: [{ arabic: 'طَا', trans: 'taa', type: 'Fat7a' }, { arabic: 'طُو', trans: 'tou', type: 'Damma' }, { arabic: 'طِي', trans: 'tii', type: 'Kasra' }, { arabic: 'طَاطِي', trans: 'taatii', type: 'Combiné' }, { arabic: 'طُوطِيَا', trans: 'toutiaa', type: 'Combiné' }, { arabic: 'طِيطَا', trans: 'tiitaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'طَعَامٌ', latin: 'taam', image: '🍽️' }, { arabic: 'طَائِرٌ', latin: 'tair', image: '🦅' }, { arabic: 'طَوِيلٌ', latin: 'tawil', image: '📏' }, { arabic: 'ضَطِيعٌ', latin: 'dati', image: '🐕' }, { arabic: 'حَطَبٌ', latin: 'hatab', image: '🪵' }, { arabic: 'شِطَطٌ', latin: 'shitat', image: '🚤' }] },
+            { dayNumber: 15, letter: 'ظ', latinName: 'za', exampleWord: 'ظل', exampleLatin: 'Zill', exampleImage: '🌂', forms: { isolated: 'ظ', beginning: 'ظـ', middle: 'ـظـ', end: 'ـظ' }, harakatExamples: [{ arabic: 'ظَا', trans: 'zaa' }, { arabic: 'ظُو', trans: 'zou' }, { arabic: 'ظِي', trans: 'zii' }, { arabic: 'ظْ', trans: 'z' }, { arabic: 'ظٍ', trans: 'zin' }], hasElongation: true, elongationExercises: [{ arabic: 'ظَا', trans: 'zaa', type: 'Fat7a' }, { arabic: 'ظُو', trans: 'zou', type: 'Damma' }, { arabic: 'ظِي', trans: 'zii', type: 'Kasra' }, { arabic: 'ظَاظِي', trans: 'zaazii', type: 'Combiné' }, { arabic: 'ظُوظِيَا', trans: 'zouziaa', type: 'Combiné' }, { arabic: 'ظِيظَا', trans: 'ziizaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'ظِلٌّ', latin: 'zill', image: '🌂' }, { arabic: 'ظَاهِرٌ', latin: 'zahir', image: '👁️' }, { arabic: 'ظَرِيفٌ', latin: 'zarif', image: '🎩' }, { arabic: 'طَظِيمٌ', latin: 'tazim', image: '🎆' }, { arabic: 'حَظِيظٌ', latin: 'haziz', image: '🍀' }, { arabic: 'شِظِّيَةٌ', latin: 'shiziya', image: '🔪' }] },
+            { dayNumber: 16, letter: 'ع', latinName: 'ayn', exampleWord: 'عين', exampleLatin: 'Ayn', exampleImage: '👁️', forms: { isolated: 'ع', beginning: 'عـ', middle: 'ـعـ', end: 'ـع' }, harakatExamples: [{ arabic: 'عَا', trans: 'aa' }, { arabic: 'عُو', trans: 'ou' }, { arabic: 'عِي', trans: 'ii' }, { arabic: 'عْ', trans: '' }, { arabic: 'عٍ', trans: 'in' }], hasElongation: true, elongationExercises: [{ arabic: 'عَا', trans: 'aa', type: 'Fat7a' }, { arabic: 'عُو', trans: 'ou', type: 'Damma' }, { arabic: 'عِي', trans: 'ii', type: 'Kasra' }, { arabic: 'عَاعِي', trans: 'aaii', type: 'Combiné' }, { arabic: 'عُوعِيَا', trans: 'ouiaa', type: 'Combiné' }, { arabic: 'عِيعَا', trans: 'iiaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'عَيْنٌ', latin: 'ayn', image: '👁️' }, { arabic: 'عِلْمٌ', latin: 'ilm', image: '📚' }, { arabic: 'عَظِيمٌ', latin: 'azim', image: '👑' }, { arabic: 'طَعْمٌ', latin: 'tam', image: '👅' }, { arabic: 'حَاعٌ', latin: 'haa', image: '🔊' }, { arabic: 'شَعِيرٌ', latin: 'shair', image: '🌾' }] },
+            { dayNumber: 17, letter: 'غ', latinName: 'ghayn', exampleWord: 'غيم', exampleLatin: 'Ghayim', exampleImage: '☁️', forms: { isolated: 'غ', beginning: 'غـ', middle: 'ـغـ', end: 'ـغ' }, harakatExamples: [{ arabic: 'غَا', trans: 'ghaa' }, { arabic: 'غُو', trans: 'ghou' }, { arabic: 'غِي', trans: 'ghii' }, { arabic: 'غْ', trans: 'gh' }, { arabic: 'غٍ', trans: 'ghin' }], hasElongation: true, elongationExercises: [{ arabic: 'غَا', trans: 'ghaa', type: 'Fat7a' }, { arabic: 'غُو', trans: 'ghou', type: 'Damma' }, { arabic: 'غِي', trans: 'ghii', type: 'Kasra' }, { arabic: 'غَاغِي', trans: 'ghaghii', type: 'Combiné' }, { arabic: 'غُوغِيَا', trans: 'ghougiaa', type: 'Combiné' }, { arabic: 'غِيغَا', trans: 'ghiighaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'غَيْمٌ', latin: 'ghayim', image: '☁️' }, { arabic: 'غَزَالٌ', latin: 'ghazal', image: '🦌' }, { arabic: 'غَنِيٌّ', latin: 'ghani', image: '💰' }, { arabic: 'عَغِيبٌ', latin: 'aghib', image: '🎭' }, { arabic: 'حَاغٌ', latin: 'hagh', image: '😮' }, { arabic: 'شَغَفٌ', latin: 'shagaf', image: '💕' }] },
+            { dayNumber: 18, letter: 'ف', latinName: 'fa', exampleWord: 'فيل', exampleLatin: 'Fil', exampleImage: '🐘', forms: { isolated: 'ف', beginning: 'فـ', middle: 'ـفـ', end: 'ـف' }, harakatExamples: [{ arabic: 'فَا', trans: 'faa' }, { arabic: 'فُو', trans: 'fou' }, { arabic: 'فِي', trans: 'fii' }, { arabic: 'فْ', trans: 'f' }, { arabic: 'فٍ', trans: 'fin' }], hasElongation: true, elongationExercises: [{ arabic: 'فَا', trans: 'faa', type: 'Fat7a' }, { arabic: 'فُو', trans: 'fou', type: 'Damma' }, { arabic: 'فِي', trans: 'fii', type: 'Kasra' }, { arabic: 'فَافِي', trans: 'faafii', type: 'Combiné' }, { arabic: 'فُوفِيَا', trans: 'foufiaa', type: 'Combiné' }, { arabic: 'فِيفَا', trans: 'fiifaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'فِيلٌ', latin: 'fil', image: '🐘' }, { arabic: 'فِئَةٌ', latin: 'fiya', image: '👥' }, { arabic: 'فَوْقٌ', latin: 'fawq', image: '⬆️' }, { arabic: 'عَفْوٌ', latin: 'afw', image: '🙏' }, { arabic: 'حَافٌّ', latin: 'haf', image: '🔓' }, { arabic: 'شِفَاءٌ', latin: 'shifa', image: '💊' }] },
+            { dayNumber: 19, letter: 'ق', latinName: 'qaf', exampleWord: 'قمر', exampleLatin: 'Qamar', exampleImage: '🌙', forms: { isolated: 'ق', beginning: 'قـ', middle: 'ـقـ', end: 'ـق' }, harakatExamples: [{ arabic: 'قَا', trans: 'qaa' }, { arabic: 'قُو', trans: 'qou' }, { arabic: 'قِي', trans: 'qii' }, { arabic: 'قْ', trans: 'q' }, { arabic: 'قٍ', trans: 'qin' }], hasElongation: true, elongationExercises: [{ arabic: 'قَا', trans: 'qaa', type: 'Fat7a' }, { arabic: 'قُو', trans: 'qou', type: 'Damma' }, { arabic: 'قِي', trans: 'qii', type: 'Kasra' }, { arabic: 'قَاقِي', trans: 'qaaqii', type: 'Combiné' }, { arabic: 'قُوقِيَا', trans: 'quuqiaa', type: 'Combiné' }, { arabic: 'قِيقَا', trans: 'qiiqaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'قَمَرٌ', latin: 'qamar', image: '🌙' }, { arabic: 'قُوَّةٌ', latin: 'quwwa', image: '💪' }, { arabic: 'قَلْبٌ', latin: 'qalb', image: '❤️' }, { arabic: 'عِقَابٌ', latin: 'iqab', image: '🦅' }, { arabic: 'حَقِيقٌ', latin: 'haqiq', image: '✅' }, { arabic: 'شَاقٌّ', latin: 'shaq', image: '💔' }] },
+            { dayNumber: 20, letter: 'ك', latinName: 'kaf', exampleWord: 'كتاب', exampleLatin: 'Kitab', exampleImage: '📖', forms: { isolated: 'ك', beginning: 'كـ', middle: 'ـكـ', end: 'ـك' }, harakatExamples: [{ arabic: 'كَا', trans: 'kaa' }, { arabic: 'كُو', trans: 'kou' }, { arabic: 'كِي', trans: 'kii' }, { arabic: 'كْ', trans: 'k' }, { arabic: 'كٍ', trans: 'kin' }], hasElongation: true, elongationExercises: [{ arabic: 'كَا', trans: 'kaa', type: 'Fat7a' }, { arabic: 'كُو', trans: 'kou', type: 'Damma' }, { arabic: 'كِي', trans: 'kii', type: 'Kasra' }, { arabic: 'كَاكِي', trans: 'kaakii', type: 'Combiné' }, { arabic: 'كُوكِيَا', trans: 'koukiaa', type: 'Combiné' }, { arabic: 'كِيكَا', trans: 'kiikaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'كِتَابٌ', latin: 'kitab', image: '📖' }, { arabic: 'كَبِيرٌ', latin: 'kabir', image: '📏' }, { arabic: 'كَلِمَةٌ', latin: 'kalima', image: '💬' }, { arabic: 'عُكَّةٌ', latin: 'ukka', image: '🪤' }, { arabic: 'حَاكِمٌ', latin: 'hakim', image: '👨‍⚖️' }, { arabic: 'شَاكِيٌ', latin: 'shaki', image: '😩' }] },
+            { dayNumber: 21, letter: 'ل', latinName: 'lam', exampleWord: 'لسان', exampleLatin: 'Lisan', exampleImage: '👅', forms: { isolated: 'ل', beginning: 'لـ', middle: 'ـلـ', end: 'ـل' }, harakatExamples: [{ arabic: 'لَا', trans: 'laa' }, { arabic: 'لُو', trans: 'lou' }, { arabic: 'لِي', trans: 'lii' }, { arabic: 'لْ', trans: 'l' }, { arabic: 'لٍ', trans: 'lin' }], hasElongation: true, elongationExercises: [{ arabic: 'لَا', trans: 'laa', type: 'Fat7a' }, { arabic: 'لُو', trans: 'lou', type: 'Damma' }, { arabic: 'لِي', trans: 'lii', type: 'Kasra' }, { arabic: 'لَالِي', trans: 'laali', type: 'Combiné' }, { arabic: 'لُولِيَا', trans: 'louliaa', type: 'Combiné' }, { arabic: 'لِيلَا', trans: 'liilaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'لِسَانٌ', latin: 'lisan', image: '👅' }, { arabic: 'لَيْلٌ', latin: 'layl', image: '🌙' }, { arabic: 'لَحْمٌ', latin: 'lahm', image: '🥩' }, { arabic: 'عِلْمٌ', latin: 'ilm', image: '📚' }, { arabic: 'حُلُولٌ', latin: 'hulul', image: '🎁' }, { arabic: 'شَالٌ', latin: 'shal', image: '🧣' }] },
+            { dayNumber: 22, letter: 'ه', latinName: 'ha', exampleWord: 'هدية', exampleLatin: 'Hadiya', exampleImage: '🎁', forms: { isolated: 'ه', beginning: 'هـ', middle: 'ـهـ', end: 'ـه' }, harakatExamples: [{ arabic: 'هَا', trans: 'haa' }, { arabic: 'هُو', trans: 'hou' }, { arabic: 'هِي', trans: 'hii' }, { arabic: 'هْ', trans: 'h' }, { arabic: 'هٍ', trans: 'hin' }], hasElongation: true, elongationExercises: [{ arabic: 'هَا', trans: 'haa', type: 'Fat7a' }, { arabic: 'هُو', trans: 'hou', type: 'Damma' }, { arabic: 'هِي', trans: 'hii', type: 'Kasra' }, { arabic: 'هَاهِي', trans: 'haahii', type: 'Combiné' }, { arabic: 'هُوهِيَا', trans: 'houhiaa', type: 'Combiné' }, { arabic: 'هِيهَا', trans: 'hiihaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'هِدِيَّةٌ', latin: 'hadiya', image: '🎁' }, { arabic: 'هَلَالٌ', latin: 'hilal', image: '🌙' }, { arabic: 'هِمَّةٌ', latin: 'himma', image: '⚡' }, { arabic: 'عَهْدٌ', latin: 'ahd', image: '📜' }, { arabic: 'حَالَةٌ', latin: 'hala', image: '❓' }, { arabic: 'شُهُودٌ', latin: 'shuud', image: '👁️' }] },
+            { dayNumber: 23, letter: 'ر', latinName: 'ra', exampleWord: 'رمل', exampleLatin: 'Raml', exampleImage: '🏜️', forms: { isolated: 'ر', beginning: 'رـ', middle: 'ـرـ', end: 'ـر' }, harakatExamples: [{ arabic: 'رَا', trans: 'raa' }, { arabic: 'رُو', trans: 'rou' }, { arabic: 'رِي', trans: 'rii' }, { arabic: 'رْ', trans: 'r' }, { arabic: 'رٍ', trans: 'rin' }], hasElongation: true, elongationExercises: [{ arabic: 'رَا', trans: 'raa', type: 'Fat7a' }, { arabic: 'رُو', trans: 'rou', type: 'Damma' }, { arabic: 'رِي', trans: 'rii', type: 'Kasra' }, { arabic: 'رَارِي', trans: 'raarii', type: 'Combiné' }, { arabic: 'رُورِيَا', trans: 'rouriaa', type: 'Combiné' }, { arabic: 'رِيرَا', trans: 'riiraa', type: 'Combiné' }], exerciseWords: [{ arabic: 'رَمْلٌ', latin: 'raml', image: '🏜️' }, { arabic: 'رَحِيمٌ', latin: 'rahim', image: '💚' }, { arabic: 'رِيَاحٌ', latin: 'riah', image: '💨' }, { arabic: 'عَرَبٌ', latin: 'arab', image: '🐪' }, { arabic: 'حُرٌّ', latin: 'hur', image: '🦅' }, { arabic: 'شَرَفٌ', latin: 'sharaf', image: '👑' }] },
+            { dayNumber: 24, letter: 'و', latinName: 'waw', exampleWord: 'وردة', exampleLatin: 'Wardah', exampleImage: '🌹', forms: { isolated: 'و', beginning: 'وـ', middle: 'ـوـ', end: 'ـو' }, harakatExamples: [{ arabic: 'وَا', trans: 'waa' }, { arabic: 'وُو', trans: 'wou' }, { arabic: 'وِي', trans: 'wii' }, { arabic: 'وْ', trans: 'w' }, { arabic: 'وٍ', trans: 'win' }], hasElongation: true, elongationExercises: [{ arabic: 'وَا', trans: 'waa', type: 'Fat7a' }, { arabic: 'وُو', trans: 'wou', type: 'Damma' }, { arabic: 'وِي', trans: 'wii', type: 'Kasra' }, { arabic: 'وَاوِي', trans: 'waawii', type: 'Combiné' }, { arabic: 'وُوَي', trans: 'wuuwii', type: 'Combiné' }, { arabic: 'وِيوَا', trans: 'wiiwaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'وَرْدَةٌ', latin: 'wardah', image: '🌹' }, { arabic: 'وَعْدٌ', latin: 'waad', image: '🤝' }, { arabic: 'وَاسِعٌ', latin: 'wasia', image: '🌍' }, { arabic: 'عَوَدٌ', latin: 'awad', image: '🪵' }, { arabic: 'حَاوٌ', latin: 'hawi', image: '🐍' }, { arabic: 'شَوْقٌ', latin: 'shawq', image: '😍' }] },
+            { dayNumber: 25, letter: 'ز', latinName: 'zay', exampleWord: 'زهرة', exampleLatin: 'Zahra', exampleImage: '💐', forms: { isolated: 'ز', beginning: 'زـ', middle: 'ـزـ', end: 'ـز' }, harakatExamples: [{ arabic: 'زَا', trans: 'zaa' }, { arabic: 'زُو', trans: 'zou' }, { arabic: 'زِي', trans: 'zii' }, { arabic: 'زْ', trans: 'z' }, { arabic: 'زٍ', trans: 'zin' }], hasElongation: true, elongationExercises: [{ arabic: 'زَا', trans: 'zaa', type: 'Fat7a' }, { arabic: 'زُو', trans: 'zou', type: 'Damma' }, { arabic: 'زِي', trans: 'zii', type: 'Kasra' }, { arabic: 'زَازِي', trans: 'zaazii', type: 'Combiné' }, { arabic: 'زُوزِيَا', trans: 'zouziaa', type: 'Combiné' }, { arabic: 'زِيزَا', trans: 'ziizaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'زَهْرَةٌ', latin: 'zahra', image: '💐' }, { arabic: 'زَمَنٌ', latin: 'zaman', image: '⏰' }, { arabic: 'زَيْتٌ', latin: 'zayt', image: '🫒' }, { arabic: 'عَزِيزٌ', latin: 'aziz', image: '👑' }, { arabic: 'حَازِمٌ', latin: 'hazim', image: '💪' }, { arabic: 'شِزَارٌ', latin: 'shizar', image: '🌸' }] },
+            { dayNumber: 26, letter: 'د', latinName: 'dal', exampleWord: 'درس', exampleLatin: 'Dars', exampleImage: '📚', forms: { isolated: 'د', beginning: 'دـ', middle: 'ـدـ', end: 'ـد' }, harakatExamples: [{ arabic: 'دَا', trans: 'daa' }, { arabic: 'دُو', trans: 'dou' }, { arabic: 'دِي', trans: 'dii' }, { arabic: 'دْ', trans: 'd' }, { arabic: 'دٍ', trans: 'din' }], hasElongation: true, elongationExercises: [{ arabic: 'دَا', trans: 'daa', type: 'Fat7a' }, { arabic: 'دُو', trans: 'dou', type: 'Damma' }, { arabic: 'دِي', trans: 'dii', type: 'Kasra' }, { arabic: 'دَادِي', trans: 'daadii', type: 'Combiné' }, { arabic: 'دُودِيَا', trans: 'doudiaa', type: 'Combiné' }, { arabic: 'دِيدَا', trans: 'diidaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'دَرْسٌ', latin: 'dars', image: '📚' }, { arabic: 'دَاخِلٌ', latin: 'dakhil', image: '🚪' }, { arabic: 'دِيَنٌ', latin: 'din', image: '⛪' }, { arabic: 'عَادٌ', latin: 'aad', image: '🏛️' }, { arabic: 'حَادٌّ', latin: 'haad', image: '⚔️' }, { arabic: 'شَدِيدٌ', latin: 'shadid', image: '⚡' }] },
+            { dayNumber: 27, letter: 'ذ', latinName: 'dhal', exampleWord: 'ذهب', exampleLatin: 'Dhahab', exampleImage: '⚜️', forms: { isolated: 'ذ', beginning: 'ذـ', middle: 'ـذـ', end: 'ـذ' }, harakatExamples: [{ arabic: 'ذَا', trans: 'dhaa' }, { arabic: 'ذُو', trans: 'dhou' }, { arabic: 'ذِي', trans: 'dhii' }, { arabic: 'ذْ', trans: 'dh' }, { arabic: 'ذٍ', trans: 'dhin' }], hasElongation: true, elongationExercises: [{ arabic: 'ذَا', trans: 'dhaa', type: 'Fat7a' }, { arabic: 'ذُو', trans: 'dhou', type: 'Damma' }, { arabic: 'ذِي', trans: 'dhii', type: 'Kasra' }, { arabic: 'ذَاذِي', trans: 'dhaadhii', type: 'Combiné' }, { arabic: 'ذُوذِيَا', trans: 'dhouddhiaa', type: 'Combiné' }, { arabic: 'ذِيذَا', trans: 'dhiidhaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'ذَهَبٌ', latin: 'dhahab', image: '⚜️' }, { arabic: 'ذَاكِرٌ', latin: 'dhakir', image: '🧠' }, { arabic: 'ذَاتٌ', latin: 'dhat', image: '🔄' }, { arabic: 'عَاذٌ', latin: 'aadh', image: '🛡️' }, { arabic: 'حَاذِقٌ', latin: 'hadiq', image: '🎯' }, { arabic: 'شَاذٌّ', latin: 'shadh', image: '🔥' }] },
+            { dayNumber: 28, letter: 'ء', latinName: 'hamza', exampleWord: 'أب', exampleLatin: 'Ab', exampleImage: '👨', forms: { isolated: 'ء', beginning: 'أ', middle: 'ـئـ', end: 'ـئ' }, harakatExamples: [{ arabic: 'أَ', trans: 'a' }, { arabic: 'أُ', trans: 'ou' }, { arabic: 'أِ', trans: 'i' }, { arabic: 'أْ', trans: '' }, { arabic: 'أٍ', trans: 'in' }], hasElongation: true, elongationExercises: [{ arabic: 'أَا', trans: 'aa', type: 'Fat7a' }, { arabic: 'أُو', trans: 'ou', type: 'Damma' }, { arabic: 'أِي', trans: 'ii', type: 'Kasra' }, { arabic: 'أَاأِي', trans: 'aaii', type: 'Combiné' }, { arabic: 'أُوأِيَا', trans: 'ouiaa', type: 'Combiné' }, { arabic: 'أِيأَا', trans: 'iiaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'أَبٌ', latin: 'ab', image: '👨‍👦' }, { arabic: 'أُمٌّ', latin: 'um', image: '👩‍👧' }, { arabic: 'أَمْرٌ', latin: 'amr', image: '📜' }, { arabic: 'عَائِلَةٌ', latin: 'aila', image: '👨‍👩‍👧‍👦' }, { arabic: 'حَائِطٌ', latin: 'hait', image: '🧱' }, { arabic: 'شَيْءٌ', latin: 'shay', image: '❓' }] },
+            { dayNumber: 29, letter: 'ة', latinName: 'ta marbuta', exampleWord: 'مدرسة', exampleLatin: 'Madrasa', exampleImage: '🏫', forms: { isolated: 'ة', beginning: '-', middle: '-', end: 'ـة' }, harakatExamples: [{ arabic: 'ةَ', trans: 'a' }, { arabic: 'ةُ', trans: 'ou' }, { arabic: 'ةِ', trans: 'i' }, { arabic: 'ةْ', trans: '' }, { arabic: 'ةٍ', trans: 'in' }], hasElongation: true, elongationExercises: [{ arabic: 'ةَا', trans: 'aa', type: 'Fat7a' }, { arabic: 'ةُو', trans: 'ou', type: 'Damma' }, { arabic: 'ةِي', trans: 'ii', type: 'Kasra' }, { arabic: 'ةَاةِي', trans: 'aaii', type: 'Combiné' }, { arabic: 'ةُوةِيَا', trans: 'ouiaa', type: 'Combiné' }, { arabic: 'ةِيةَا', trans: 'iiaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'مَدْرَسَةٌ', latin: 'madrasa', image: '🏫' }, { arabic: 'طَالِبَةٌ', latin: 'taliba', image: '👩‍🎓' }, { arabic: 'جَزِيرَةٌ', latin: 'jazira', image: '🏝️' }, { arabic: 'عَائِشَةٌ', latin: 'aisha', image: '👸' }, { arabic: 'حَدِيقَةٌ', latin: 'hadiqah', image: '🌹' }, { arabic: 'شَهَادَةٌ', latin: 'shahada', image: '📜' }] }
+,
+            {
+                dayNumber: 30,
+                letter: 'الْفَاتِحَة',
+                latinName: 'Al-Fatiha',
+                exampleWord: 'الْفَاتِحَة',
+                exampleLatin: 'La Sourate Al-Fatiha',
+                exampleImage: '📖',
+                forms: { isolated: '📖', beginning: '-', middle: '-', end: '-' },
+                isFatiha: true,
+                harakatExamples: [{ arabic: 'قَلَمٌ', trans: 'Qalam (stylo)' }, { arabic: 'مَكْتَبٌ', trans: 'Maktab (bureau)' }, { arabic: 'كِتَابٌ', trans: 'Kitab (livre)' }, { arabic: 'مُعَلِّمٌ', trans: 'Muallim (enseignant)' }, { arabic: 'دَرْسٌ', trans: 'Dars (leçon)' }],
+                exerciseWords: [
+                    { arabic: 'لِلَّهِ', transliteration: 'Lillahi', latin: 'Lillahi=à Allah' },
+                    { arabic: 'الْحَمْدُ', transliteration: 'Al-hamdu', latin: 'Al-hamdu=La louange' },
+                    { arabic: 'الرَّحِيمِ', transliteration: 'Ar-Rahimi', latin: 'Ar-Rahimi=Le Très Miséricordieux' },
+                    { arabic: 'الرَّحْمَٰنِ', transliteration: 'Ar-Rahmani', latin: 'Ar-Rahmani=Le Tout Miséricordieux' },
+                    { arabic: 'اللَّهِ', transliteration: 'Allahi', latin: 'Allahi=Allah' },
+                    { arabic: 'بِسْمِ', transliteration: 'Bismi', latin: 'Bismi=Au nom de' },
+                    { arabic: 'يَوْمِ', transliteration: 'Yawmi', latin: 'Yawmi=du Jour' },
+                    { arabic: 'مَالِكِ', transliteration: 'Maliki', latin: 'Maliki=Maître de' },
+                    { arabic: 'الرَّحِيمِ', transliteration: 'Ar-Rahimi', latin: 'Ar-Rahimi=Le Très Miséricordieux' },
+                    { arabic: 'الرَّحْمَٰنِ', transliteration: 'Ar-Rahmani', latin: 'Ar-Rahmani=Le Tout Miséricordieux' },
+                    { arabic: 'الْعَالَمِينَ', transliteration: 'Al-ʿālamīn', latin: 'Al-ʿālamīn=l’univers' },
+                    { arabic: 'رَبِّ', transliteration: 'Rabbi', latin: 'Rabbi=Seigneur de' },
+                    { arabic: 'اهْدِنَا', transliteration: 'Ihdinā', latin: 'Ihdinā=Guide-nous' },
+                    { arabic: 'نَسْتَعِينُ', transliteration: 'Nastaʿīnu', latin: 'Nastaʿīnu=nous implorons secours' },
+                    { arabic: 'وَإِيَّاكَ', transliteration: 'Wa iyyaka', latin: 'Wa iyyaka=et Toi…' },
+                    { arabic: 'نَعْبُدُ', transliteration: 'Naʿbudu', latin: 'Naʿbudu=nous adorons' },
+                    { arabic: 'إِيَّاكَ', transliteration: 'Iyyaka', latin: 'Iyyaka=C’est Toi…' },
+                    { arabic: 'الدِّينِ', transliteration: 'Ad-dīn', latin: 'Ad-dīn=de la Rétribution' },
+                    { arabic: 'عَلَيْهِمْ', transliteration: 'ʿalayhim', latin: 'ʿalayhim=de faveurs' },
+                    { arabic: 'أَنْعَمْتَ', transliteration: 'Anʿamta', latin: 'Anʿamta=Tu as comblés…' },
+                    { arabic: 'الَّذِينَ', transliteration: 'Alladhīna', latin: 'Alladhīna=ceux que…' },
+                    { arabic: 'صِرَاطَ', transliteration: 'Sirāta', latin: 'Sirāta=le chemin de…' },
+                    { arabic: 'الْمُسْتَقِيمَ', transliteration: 'Al-mustaqīma', latin: 'Al-mustaqīma=droit' },
+                    { arabic: 'الصِّرَاطَ', transliteration: 'As-sirāta', latin: 'As-sirāta=le chemin…' },
+                    { arabic: 'الضَّالِّينَ', transliteration: 'Ad-dāllīn', latin: 'Ad-dāllīn=les égarés' },
+                    { arabic: 'وَلَا', transliteration: 'Wa lā', latin: 'Wa lā=ni…' },
+                    { arabic: 'عَلَيْهِمْ', transliteration: 'ʿalayhim', latin: 'ʿalayhim=contre eux' },
+                    { arabic: 'الْمَغْضُوبِ', transliteration: 'Al-maghdūbi', latin: 'Al-maghdūbi=ceux qui ont subi Ta colère' },
+                    { arabic: 'غَيْرِ', transliteration: 'Ghayri', latin: 'Ghayri=non pas…' }
+                ]
+            }
+        ];
+
+        let currentDay = 0;
+        let currentPage = 0;
+        let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+
+        function initializeApp() {
+            renderBadges();
+            updateProgress();
+            const select = document.getElementById('day-select');
+            daysData.forEach((day, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `Jour ${day.dayNumber}: ${day.letter} (${day.latinName})`;
+                select.appendChild(option);
+            });
+        }
+
+        function renderBadges() {
+            const container = document.getElementById('badgesContainer');
+            container.innerHTML = '';
+            daysData.forEach((day, index) => {
+                const badge = document.createElement('div');
+                badge.className = 'badge ' + (completedDays.includes(index) ? 'unlocked' : 'locked');
+                badge.title = `Jour ${day.dayNumber}: ${day.letter}`;
+                badge.textContent = day.letter;
+                container.appendChild(badge);
+            });
+        }
+
+        function updateProgress() {
+            const percentage = (completedDays.length / 29) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = completedDays.length + '/29 jours';
+        }
+
+        function markDayComplete() {
+            if (!completedDays.includes(currentDay)) {
+                completedDays.push(currentDay);
+                localStorage.setItem('completedDays', JSON.stringify(completedDays));
+                renderBadges();
+                updateProgress();
+            }
+        }
+
+        function selectDay(value) { if (value !== '') renderDay(parseInt(value)); }
+
+        function renderDay(dayIndex) {
+            currentDay = dayIndex;
+            currentPage = 0;
+            const day = daysData[dayIndex];
+            const navTabs = document.getElementById('navTabs');
+            let tabsHtml = `<button class="nav-tab active" onclick="changePage(0)">Présentation</button><button class="nav-tab" onclick="changePage(1)">Harakate</button><button class="nav-tab" onclick="changePage(2)">Formes</button>`;
+            if (day.hasElongation) { tabsHtml += `<button class="nav-tab" onclick="changePage(3)">Prolongations</button><button class="nav-tab" onclick="changePage(4)">Exercice</button>`; }
+            else { tabsHtml += `<button class="nav-tab" onclick="changePage(3)">Exercice</button>`; }
+            navTabs.innerHTML = tabsHtml;
+            const container = document.getElementById('pages-container');
+            let pagesHtml = renderPresentationPage(day) + renderHarakatePage(day) + renderFormesPage(day);
+            if (day.hasElongation) { pagesHtml += renderElongationPage(day, dayIndex) + renderExercicePage(day, dayIndex); document.getElementById('page-total').textContent = 5; }
+            else { pagesHtml += renderExercicePage(day, dayIndex); document.getElementById('page-total').textContent = 4; }
+            container.innerHTML = pagesHtml;
+            renderPage(0);
+            updateNavigation();
+            markDayComplete();
+        }
+
+        function renderPresentationPage(day) { return `<div class="page" id="page-0"><div class="presentation-box"><div class="presentation-image">${day.exampleImage}</div><div class="presentation-info"><h2>Jour ${day.dayNumber} - ${day.letter}</h2><p><strong>Nom de la lettre :</strong> ${day.latinName}</p><p><strong>Exemple :</strong></p><div class="word-with-harakah">${day.exampleWord}</div><div class="transcription">${day.exampleLatin}</div><div style="text-align: center; margin-top: 15px;"><button class="audio-btn" onclick="speakArabic('${day.exampleWord}')">🔊 Écoute-moi !</button></div></div></div></div>`; }
+
+        function renderHarakatePage(day) { const colors = ['dot-red', 'dot-green', 'dot-blue', 'dot-orange', 'dot-purple']; const cardsHtml = day.harakatExamples.map((h, idx) => `<div class="card"><div class="card-label">${['Fat7a', 'Damma', 'Kasra', 'Sukun', 'Tanwin'][idx]}</div><div class="colored-dot ${colors[idx]}"></div><div class="card-letter">${h.arabic}</div><div class="card-transcription">${h.trans}</div><button class="audio-btn" onclick="speakArabic('${h.arabic}')" style="width: 35px; height: 35px; font-size: 16px; margin-top: 5px;">🔊</button></div>`).join(''); return `<div class="page" id="page-1"><div class="section-header">Les 5 voyelles sur ${day.letter} - Écoute bien !</div><div class="grid">${cardsHtml}</div></div>`; }
+
+        function renderFormesPage(day) { return `<div class="page" id="page-2"><div class="section-header">Comment ${day.letter} s'écrit selon sa position</div><div class="forms-grid"><div class="form-box"><div class="form-label">Fin du mot</div><div class="form-letter">${day.forms.end}</div><button class="audio-btn" style="width: 35px; height: 35px; font-size: 16px;" onclick="speakArabic('${day.forms.end}')">🔊</button></div><div class="form-box"><div class="form-label">Milieu du mot</div><div class="form-letter">${day.forms.middle}</div><button class="audio-btn" style="width: 35px; height: 35px; font-size: 16px;" onclick="speakArabic('${day.forms.middle}')">🔊</button></div><div class="form-box"><div class="form-label">Début du mot</div><div class="form-letter">${day.forms.beginning}</div><button class="audio-btn" style="width: 35px; height: 35px; font-size: 16px;" onclick="speakArabic('${day.forms.beginning}')">🔊</button></div><div class="form-box"><div class="form-label">Lettre seule</div><div class="form-letter">${day.forms.isolated}</div><button class="audio-btn" style="width: 35px; height: 35px; font-size: 16px;" onclick="speakArabic('${day.forms.isolated}')">🔊</button></div></div></div>`; }
+
+        function renderElongationPage(day, dayIndex) { const cardsHtml = day.elongationExercises.map((word, idx) => `<div class="elongation-exercise-card"><div class="elongation-type">${word.type}</div><div class="elongation-word">${word.arabic}</div><div class="elongation-reveal hidden" id="elong-reveal-${dayIndex}-${idx}">${word.trans}</div><button class="reveal-btn" onclick="toggleElongReveal(${dayIndex}, ${idx})">Afficher</button><button class="audio-btn" style="width: 35px; height: 35px; font-size: 16px; margin-top: 5px;" onclick="speakArabic('${word.arabic}')">🔊</button></div>`).join(''); return `<div class="page" id="page-3"><div class="elongation-section"><div class="elongation-title">🔊 Les prolongations - Sons longs !</div><p style="margin-bottom: 15px; color: #555; font-size: 14px;">En arabe, certaines lettres allongent les sons. Écoute bien la différence !</p><table class="elongation-table"><tr><th>Voyelle</th><th>Prolongation</th><th>Exemple</th><th>Prononciation</th></tr><tr><td><strong>Fat7a (ا)</strong></td><td><div class="elongation-letter">${day.letter}ا</div></td><td><div class="elongation-letter">${day.letter}َا</div></td><td><span class="elongation-trans">aa (long)</span></td></tr><tr><td><strong>Damma (و)</strong></td><td><div class="elongation-letter">${day.letter}و</div></td><td><div class="elongation-letter">${day.letter}ُو</div></td><td><span class="elongation-trans">ou (long)</span></td></tr><tr><td><strong>Kasra (ي)</strong></td><td><div class="elongation-letter">${day.letter}ي</div></td><td><div class="elongation-letter">${day.letter}ِي</div></td><td><span class="elongation-trans">ii (long)</span></td></tr></table></div><div style="margin-top: 20px;"><div class="section-header">À toi d'essayer ! Lis puis écoute</div><div class="elongation-exercise-grid">${cardsHtml}</div></div></div>`; }
+
+        function renderExercicePage(day, dayIndex) { const pageNum = day.hasElongation ? 4 : 3; const cardsHtml = day.exerciseWords.map((word, idx) => `<div class="exercise-card">${word.image ? `<div class="exercise-image">${word.image}</div>` : ''}<div class="exercise-word">${word.arabic}</div><div class="exercise-reveal hidden" id="reveal-${dayIndex}-${idx}">${word.latin}</div><button class="reveal-btn" onclick="toggleReveal(${dayIndex}, ${idx})">Afficher</button><button class="audio-btn" style="width: 35px; height: 35px; font-size: 16px; margin-top: 5px;" onclick="speakArabic('${word.arabic}')">🔊</button></div>`).join(''); return `<div class="page" id="page-${pageNum}"><div class="section-header">À toi de lire et écouter (Droite → Gauche)</div><div class="exercise-grid">${cardsHtml}</div><div class="note">Essaie d'abord de lire sans cliquer sur "Afficher". Tu le maîtrises ? Bravo ! 🎉</div></div>`; }
+
+        function toggleReveal(dayIndex, wordIndex) { const revealId = `reveal-${dayIndex}-${wordIndex}`; document.getElementById(revealId).classList.toggle('hidden'); }
+        function toggleElongReveal(dayIndex, wordIndex) { const revealId = `elong-reveal-${dayIndex}-${wordIndex}`; document.getElementById(revealId).classList.toggle('hidden'); }
+        function changePage(pageNum) { currentPage = pageNum; renderPage(pageNum); updateNavigation(); }
+        function renderPage(pageNum) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(`page-${pageNum}`).classList.add('active'); document.querySelectorAll('.nav-tab').forEach((tab, idx) => { tab.classList.toggle('active', idx === pageNum); }); document.getElementById('page-num').textContent = pageNum + 1; }
+        function nextPage() { const maxPage = daysData[currentDay].hasElongation ? 4 : 3; if (currentPage < maxPage) changePage(currentPage + 1); }
+        function previousPage() { if (currentPage > 0) changePage(currentPage - 1); }
+        function updateNavigation() { const maxPage = daysData[currentDay].hasElongation ? 4 : 3; document.querySelector('.nav-buttons .nav-btn:first-child').disabled = currentPage === 0; document.querySelector('.nav-buttons .nav-btn:last-child').disabled = currentPage === maxPage; }
+        function speakArabic(text) { if ('speechSynthesis' in window) { speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'ar-SA'; utterance.rate = 0.8; utterance.pitch = 1; utterance.volume = 1; speechSynthesis.speak(utterance); } }
+
+        setLogos();
+        createStars();
+    
+
+        // Initialize app when DOM is ready
+        ensureDOMReady();
+    </script></script>
+</body>
+</html>
