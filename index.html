@@ -1071,6 +1071,16 @@
     </div>
 
     <script>
+
+// Déblocage audio Android
+document.addEventListener('touchstart', unlockAudio, {once:true});
+document.addEventListener('click', unlockAudio, {once:true});
+function unlockAudio() {
+    const a = new Audio();
+    a.play().catch(()=>{});
+}
+
+
         // Add detailed logging for debugging
         console.log("Script loading...");
 
