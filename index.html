@@ -919,7 +919,107 @@
                 height: 150px;
             }
         }
-    </style>
+    
+        /* OPTIMISATION MOBILE - PWA */
+        @media (max-width: 768px) {
+            .container {
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .home-page {
+                padding: 10px;
+                justify-content: space-around;
+            }
+
+            .home-title {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            .home-subtitle {
+                font-size: 14px;
+            }
+
+            #badgesContainer {
+                gap: 8px;
+                font-size: 12px;
+            }
+
+            .badge {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            #daySelect {
+                max-width: 100%;
+                font-size: 14px;
+            }
+
+            .nav-tab {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .page-content {
+                padding: 10px;
+            }
+
+            /* Safe area pour notch */
+            @supports (padding: max(0px)) {
+                .container {
+                    padding-left: max(10px, env(safe-area-inset-left));
+                    padding-right: max(10px, env(safe-area-inset-right));
+                    padding-top: max(10px, env(safe-area-inset-top));
+                    padding-bottom: max(10px, env(safe-area-inset-bottom));
+                }
+            }
+        }
+
+        /* Splash screen pour iOS */
+        @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+            .home-page::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #1a1a2e 100%);
+                z-index: -1;
+            }
+        }
+
+        /* Mode sombre pour système */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+            }
+
+            .container {
+                background-color: #222;
+            }
+        }
+</style>
+
+    <!-- PWA - Progressive Web App -->
+    <meta name="theme-color" content="#1a9b8e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Horizon">
+    <meta name="description" content="Apprenez l'arabe en 29 jours avec Horizon Bilingue">
+
+    <!-- Icônes -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>">
+
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="data:application/json,{%22name%22:%22Horizon%20Bilingue%20-%20Apprendre%20l'Arabe%22,%22short_name%22:%22Horizon%22,%22description%22:%22Apprenez%20l'arabe%20en%2029%20jours%22,%22start_url%22:%22./%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%231a9b8e%22,%22orientation%22:%22portrait-primary%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22any%22},{%22src%22:%22data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22maskable%22}]}">
+
+    <!-- Viewport pour mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 </head>
 <body>
     <div class="container">
@@ -1492,5 +1592,68 @@ function unlockAudio() {
         // Initialize app when DOM is ready
         ensureDOMReady();
     </script></script>
+
+    <script>
+        // Enregistrer le service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('data:application/javascript,' + encodeURIComponent(`
+                self.addEventListener('install', event => {
+                    event.waitUntil(caches.open('horizon-v1').then(cache => {
+                        console.log('Cache créé');
+                    }));
+                    self.skipWaiting();
+                });
+
+                self.addEventListener('activate', event => {
+                    event.waitUntil(
+                        caches.keys().then(cacheNames => {
+                            return Promise.all(
+                                cacheNames.map(cacheName => caches.delete(cacheName))
+                            );
+                        })
+                    );
+                    self.clients.claim();
+                });
+
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request).then(response => {
+                            return response || fetch(event.request).catch(() => {
+                                return new Response('Offline', { status: 503 });
+                            });
+                        })
+                    );
+                });
+            `)).catch(err => console.log('SW registration failed:', err));
+        }
+
+        // Demander la permission d'installer l'app
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('PWA prête à être installée');
+        });
+
+        // Ajouter un bouton "Installer" sur la page d'accueil
+        window.addEventListener('load', () => {
+            if (deferredPrompt) {
+                const installBtn = document.createElement('button');
+                installBtn.textContent = '⬇️ Installer l'app';
+                installBtn.style.cssText = 'position: fixed; top: 80px; right: 20px; padding: 10px 15px; background: #1a9b8e; color: white; border: none; border-radius: 8px; cursor: pointer; z-index: 1000; font-size: 14px; font-weight: bold;';
+                installBtn.onclick = () => {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then(choiceResult => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('App installée');
+                        }
+                        deferredPrompt = null;
+                        installBtn.remove();
+                    });
+                };
+                document.body.appendChild(installBtn);
+            }
+        });
+    </script>
 </body>
 </html>
