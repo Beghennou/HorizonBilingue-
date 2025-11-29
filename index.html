@@ -919,107 +919,7 @@
                 height: 150px;
             }
         }
-    
-        /* OPTIMISATION MOBILE - PWA */
-        @media (max-width: 768px) {
-            .container {
-                min-height: 100vh;
-                padding-bottom: 20px;
-            }
-
-            .home-page {
-                padding: 10px;
-                justify-content: space-around;
-            }
-
-            .home-title {
-                font-size: 28px;
-                margin-bottom: 10px;
-            }
-
-            .home-subtitle {
-                font-size: 14px;
-            }
-
-            #badgesContainer {
-                gap: 8px;
-                font-size: 12px;
-            }
-
-            .badge {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            #daySelect {
-                max-width: 100%;
-                font-size: 14px;
-            }
-
-            .nav-tab {
-                font-size: 12px;
-                padding: 8px 10px;
-            }
-
-            .page-content {
-                padding: 10px;
-            }
-
-            /* Safe area pour notch */
-            @supports (padding: max(0px)) {
-                .container {
-                    padding-left: max(10px, env(safe-area-inset-left));
-                    padding-right: max(10px, env(safe-area-inset-right));
-                    padding-top: max(10px, env(safe-area-inset-top));
-                    padding-bottom: max(10px, env(safe-area-inset-bottom));
-                }
-            }
-        }
-
-        /* Splash screen pour iOS */
-        @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
-            .home-page::after {
-                content: '';
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #1a1a2e 100%);
-                z-index: -1;
-            }
-        }
-
-        /* Mode sombre pour système */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #1a1a1a;
-            }
-
-            .container {
-                background-color: #222;
-            }
-        }
-</style>
-
-    <!-- PWA - Progressive Web App -->
-    <meta name="theme-color" content="#1a9b8e">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Horizon">
-    <meta name="description" content="Apprenez l'arabe en 29 jours avec Horizon Bilingue">
-
-    <!-- Icônes -->
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>">
-
-    <!-- Manifest PWA -->
-    <link rel="manifest" href="data:application/json,{%22name%22:%22Horizon%20Bilingue%20-%20Apprendre%20l'Arabe%22,%22short_name%22:%22Horizon%22,%22description%22:%22Apprenez%20l'arabe%20en%2029%20jours%22,%22start_url%22:%22./%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%231a9b8e%22,%22orientation%22:%22portrait-primary%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22any%22},{%22src%22:%22data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='90' fill='%231a9b8e'/><text x='96' y='120' font-size='80' fill='white' text-anchor='middle' font-family='Georgia'>ح</text></svg>%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22maskable%22}]}">
-
-    <!-- Viewport pour mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    </style>
 </head>
 <body>
     <div class="container">
@@ -1171,16 +1071,6 @@
     </div>
 
     <script>
-
-// Déblocage audio Android
-document.addEventListener('touchstart', unlockAudio, {once:true});
-document.addEventListener('click', unlockAudio, {once:true});
-function unlockAudio() {
-    const a = new Audio();
-    a.play().catch(()=>{});
-}
-
-
         // Add detailed logging for debugging
         console.log("Script loading...");
 
@@ -1320,38 +1210,10 @@ function unlockAudio() {
         }
 
         const daysData = [
-            { dayNumber: 1, letter: 'ب', latinName: 'ba', exampleWord: 'بابا', exampleLatin: 'Baba', exampleImage: '👶', forms: { isolated: 'ب', beginning: 'بـ', middle: 'ـبـ', end: 'ـب' }, harakatExamples: [{ arabic: 'بَ', trans: 'ba' }, { arabic: 'بُ', trans: 'bou' }, { arabic: 'بِ', trans: 'bi' }, { arabic: 'بْ', trans: 'b' }, { arabic: 'بٍ', trans: 'bin' }], exerciseWords: [
-            { arabic: 'بَا', latin: 'ba', image: '🅱️' },
-            { arabic: 'تَا', latin: 'ta', image: '🅣' },
-            { arabic: 'ثَا', latin: 'tha', image: '🅣' },
-            { arabic: 'نَا', latin: 'na', image: '🅝' },
-            { arabic: 'لَا', latin: 'la', image: '🅛' },
-            { arabic: 'بِي', latin: 'bi', image: '🅱️' }
-        ] },
-            { dayNumber: 2, letter: 'ت', latinName: 'ta', exampleWord: 'تمر', exampleLatin: 'Tamr', exampleImage: '📅', forms: { isolated: 'ت', beginning: 'تـ', middle: 'ـتـ', end: 'ـت' }, harakatExamples: [{ arabic: 'تَ', trans: 'ta' }, { arabic: 'تُ', trans: 'tou' }, { arabic: 'تِ', trans: 'ti' }, { arabic: 'تْ', trans: 't' }, { arabic: 'تٍ', trans: 'tin' }], hasSpecialVowel: true, specialVowelTitle: "La voyelle OUN (ـٌ) - Tanwin", specialVowelExplanation: "RÈGLE IMPORTANTE:\n\n🎯 La voyelle OUN (ـٌ) s'appelle 'Tanwin'\n\n✅ Elle signifie: 'indéfini' (UN ou UNE)\n\n📖 Exemple:\n• كِتَابٌ (kitabun) = UN LIVRE\n• قَلَمٌ (qalamun) = UN STYLO\n\n❌ Sans oun:\n• الكِتَاب (al-kitab) = LE LIVRE (défini)\n• القَلَم (al-qalam) = LE STYLO (défini)\n\n💡 PRONONCIATION: On prononce 'IN' à la fin (comme 'un')\n\n🎵 Écoute bien les exemples ci-dessous!", specialVowelExercises: [{ arabic: 'تٌ', trans: 'tun', meaning: 'un T (indéfini)', image: '🔤' }, { arabic: 'بٌ', trans: 'bun', meaning: 'un B (indéfini)', image: '🅱️' }, { arabic: 'نٌ', trans: 'nun', meaning: 'un N (indéfini)', image: '🔤' }, { arabic: 'لٌ', trans: 'lun', meaning: 'un L (indéfini)', image: '🔤' }], exerciseWords: [
-            { arabic: 'كِتَابٌ', latin: 'kitabun', image: '📖' },
-            { arabic: 'بَيْتٌ', latin: 'baytun', image: '🏠' },
-            { arabic: 'قَلَمٌ', latin: 'qalamun', image: '✏️' },
-            { arabic: 'وَلَدٌ', latin: 'waladun', image: '👦' },
-            { arabic: 'بِنْتٌ', latin: 'bintun', image: '👧' },
-            { arabic: 'جَمَلٌ', latin: 'jamalun', image: '🐪' }
-        ] },
-            { dayNumber: 3, letter: 'ث', latinName: 'tha', exampleWord: 'ثمر', exampleLatin: 'Thamr', exampleImage: '🍇', forms: { isolated: 'ث', beginning: 'ثـ', middle: 'ـثـ', end: 'ـث' }, harakatExamples: [{ arabic: 'ثَا', trans: 'thaa' }, { arabic: 'ثُو', trans: 'thou' }, { arabic: 'ثِي', trans: 'thii' }, { arabic: 'ثْ', trans: 'th' }, { arabic: 'ثٍ', trans: 'thin' }], hasElongation: true, elongationExercises: [{ arabic: 'ثَا', trans: 'thaa', type: 'Fat7a' }, { arabic: 'ثُو', trans: 'thou', type: 'Damma' }, { arabic: 'ثِي', trans: 'thii', type: 'Kasra' }, { arabic: 'ثَاثِي', trans: 'thaathii', type: 'Combiné' }, { arabic: 'ثُوثِيَا', trans: 'thoothiaa', type: 'Combiné' }, { arabic: 'ثِيثَا', trans: 'thiithaa', type: 'Combiné' }], hasSpecialCase: true, specialCaseTitle: "L'article ال - LA RÈGLE ESSENTIELLE", specialCaseExplanation: "RÈGLE IMPORTANTE:\n\n🎯 L'article ال (AL) = LE / LA / LES\n\n✅ UTILISATION:\n• Il s'attache DIRECTEMENT au nom\n• Il transforme un mot indéfini en défini\n• C'est l'article DÉFINI en arabe\n\n📖 EXEMPLES:\n• ثَمَرٌ = UNE FRUIT (indéfini)\n• الثَّمَرُ = LE FRUIT (défini avec ال)\n\n💡 PRONONCIATION:\nAtt-thamaru (on assimile le 'l' avec la consonne qui suit)\n\n⚠️ ATTENTION:\nLa 'alif' (ا) de 'al' disparaît à la prononciation!\n\n🎵 Écoute bien comment on prononce les 3 exemples avec ال:", specialCaseExercises: [{ title: "L'article ال - LE/LA/LES (défini)", description: "Quand on ajoute ال, le mot devient DÉFINI (spécifique)", examples: [{ arabic: 'الثَّمَرُ', trans: 'ath-thamaru', meaning: '🎯 LE FRUIT - Défini (spécifique)', image: '🍇' }, { arabic: 'البَيْتُ', trans: 'al-baytu', meaning: '🎯 LA MAISON - Défini (spécifique)', image: '🏠' }, { arabic: 'النَّاسُ', trans: 'an-naasu', meaning: '🎯 LES GENS - Défini (spécifique)', image: '👥' }] }], exerciseWords: [
-            { arabic: 'الكِتَاب', latin: 'al-kitab', image: '📖' },
-            { arabic: 'البَيْت', latin: 'al-bayt', image: '🏠' },
-            { arabic: 'القَلَم', latin: 'al-qalam', image: '✏️' },
-            { arabic: 'الوَلَد', latin: 'al-walad', image: '👦' },
-            { arabic: 'البِنْت', latin: 'al-bint', image: '👧' },
-            { arabic: 'الجَمَل', latin: 'al-jamal', image: '🐪' }
-        ] },
-            { dayNumber: 4, letter: 'ن', latinName: 'nun', exampleWord: 'نمل', exampleLatin: 'Naml', exampleImage: '🐜', forms: { isolated: 'ن', beginning: 'نـ', middle: 'ـنـ', end: 'ـن' }, harakatExamples: [{ arabic: 'نَ', trans: 'na' }, { arabic: 'نُ', trans: 'nou' }, { arabic: 'نِ', trans: 'ni' }, { arabic: 'نْ', trans: 'n' }, { arabic: 'نٍ', trans: 'nin' }], hasElongation: true, elongationExercises: [{ arabic: 'نَا', trans: 'naa', type: 'Fat7a' }, { arabic: 'نُو', trans: 'nou', type: 'Damma' }, { arabic: 'نِي', trans: 'nii', type: 'Kasra' }, { arabic: 'نَانِي', trans: 'naanii', type: 'Combiné' }, { arabic: 'نُونِيَا', trans: 'nouniaa', type: 'Combiné' }, { arabic: 'نِينَا', trans: 'niinaa', type: 'Combiné' }], hasChedda: true, cheddaTitle: "La CHEDDA (شَدَّة) - DOUBLER LA CONSONNE", cheddaExplanation: "RÈGLE IMPORTANTE:\n\n🎯 La CHEDDA (شَدَّة) = Petit point épais\n\n✅ SIGNIFICATION:\n• La consonne est DOUBLÉE\n• On la prononce DEUX FOIS d'affilée\n• Elle change le sens du mot!\n\n📖 EXEMPLES:\n• بَيَّنَ (bayyana) = CLARIFIER (with chedda)\n• بَيَنَ (bayana) = ENTRE (without chedda)\n\n💡 PRONONCIATION:\nOn prononce la consonne DEUX fois:\n• نَبَّتَ = na-BBA-ta (double BB)\n• يَنَّ = YA-NNA (double NN)\n\n🎵 Écoute bien les 4 exemples - tu vas ENTENDRE la différence!\n\n⚠️ TRÈS IMPORTANT:\nLa chedda change complètement la prononciation ET le sens!", cheddaExercises: [{ arabic: 'نَبَّتَ', trans: 'nabbata', meaning: '🎯 FAIRE POUSSER (N+BB+a+ta)', image: '🌱' }, { arabic: 'يَنَّ', trans: 'yanna', meaning: '🎯 DEVENIR MÛR (Y+NN+a)', image: '🍎' }, { arabic: 'بَيَّنَ', trans: 'bayyana', meaning: '🎯 CLARIFIER (B+YY+a+na)', image: '💡' }, { arabic: 'تَبَنَّى', trans: 'tabannaa', meaning: '🎯 ADOPTER (T+b+NN+aa)', image: '👶' }], exerciseWords: [
-            { arabic: 'أُمِّي', latin: 'ummi', image: '👩‍👧' },
-            { arabic: 'جَدِّي', latin: 'jaddi', image: '👴' },
-            { arabic: 'حَجَّ', latin: 'hajja', image: '🕋' },
-            { arabic: 'رَدَّ', latin: 'radda', image: '🔙' },
-            { arabic: 'سَبَّاح', latin: 'sabbah', image: '🏊' },
-            { arabic: 'مُعَلِّم', latin: 'mualim', image: '👨‍🏫' }
-        ] },
+            { dayNumber: 1, letter: 'ب', latinName: 'ba', exampleWord: 'بابا', exampleLatin: 'Baba', exampleImage: '👶', forms: { isolated: 'ب', beginning: 'بـ', middle: 'ـبـ', end: 'ـب' }, harakatExamples: [{ arabic: 'بَ', trans: 'ba' }, { arabic: 'بُ', trans: 'bou' }, { arabic: 'بِ', trans: 'bi' }, { arabic: 'بْ', trans: 'b' }, { arabic: 'بٍ', trans: 'bin' }], exerciseWords: [{ arabic: 'بَبَ', latin: 'baba', image: null }, { arabic: 'بِبِ', latin: 'bibi', image: null }, { arabic: 'بُبُ', latin: 'boubu', image: null }, { arabic: 'بَبُ', latin: 'babou', image: null }, { arabic: 'بِبُ', latin: 'bibou', image: null }, { arabic: 'بٍبِ', latin: 'binbi', image: null }] },
+            { dayNumber: 2, letter: 'ت', latinName: 'ta', exampleWord: 'تمر', exampleLatin: 'Tamr', exampleImage: '📅', forms: { isolated: 'ت', beginning: 'تـ', middle: 'ـتـ', end: 'ـت' }, harakatExamples: [{ arabic: 'تَ', trans: 'ta' }, { arabic: 'تُ', trans: 'tou' }, { arabic: 'تِ', trans: 'ti' }, { arabic: 'تْ', trans: 't' }, { arabic: 'تٍ', trans: 'tin' }], hasSpecialVowel: true, specialVowelTitle: "La voyelle OUN (ـٌ) - Tanwin", specialVowelExplanation: "RÈGLE IMPORTANTE:\n\n🎯 La voyelle OUN (ـٌ) s'appelle 'Tanwin'\n\n✅ Elle signifie: 'indéfini' (UN ou UNE)\n\n📖 Exemple:\n• كِتَابٌ (kitabun) = UN LIVRE\n• قَلَمٌ (qalamun) = UN STYLO\n\n❌ Sans oun:\n• الكِتَاب (al-kitab) = LE LIVRE (défini)\n• القَلَم (al-qalam) = LE STYLO (défini)\n\n💡 PRONONCIATION: On prononce 'IN' à la fin (comme 'un')\n\n🎵 Écoute bien les exemples ci-dessous!", specialVowelExercises: [{ arabic: 'تٌ', trans: 'tun', meaning: 'un T (indéfini)', image: '🔤' }, { arabic: 'بٌ', trans: 'bun', meaning: 'un B (indéfini)', image: '🅱️' }, { arabic: 'نٌ', trans: 'nun', meaning: 'un N (indéfini)', image: '🔤' }, { arabic: 'لٌ', trans: 'lun', meaning: 'un L (indéfini)', image: '🔤' }], exerciseWords: [{ arabic: 'تَبَ', latin: 'taba', image: null }, { arabic: 'بَتَ', latin: 'bata', image: null }, { arabic: 'تِبِ', latin: 'tibi', image: null }, { arabic: 'تَتَ', latin: 'tata', image: null }, { arabic: 'بِتِ', latin: 'biti', image: null }, { arabic: 'تِتِ', latin: 'titi', image: null }] },
+            { dayNumber: 3, letter: 'ث', latinName: 'tha', exampleWord: 'ثمر', exampleLatin: 'Thamr', exampleImage: '🍇', forms: { isolated: 'ث', beginning: 'ثـ', middle: 'ـثـ', end: 'ـث' }, harakatExamples: [{ arabic: 'ثَا', trans: 'thaa' }, { arabic: 'ثُو', trans: 'thou' }, { arabic: 'ثِي', trans: 'thii' }, { arabic: 'ثْ', trans: 'th' }, { arabic: 'ثٍ', trans: 'thin' }], hasElongation: true, elongationExercises: [{ arabic: 'ثَا', trans: 'thaa', type: 'Fat7a' }, { arabic: 'ثُو', trans: 'thou', type: 'Damma' }, { arabic: 'ثِي', trans: 'thii', type: 'Kasra' }, { arabic: 'ثَاثِي', trans: 'thaathii', type: 'Combiné' }, { arabic: 'ثُوثِيَا', trans: 'thoothiaa', type: 'Combiné' }, { arabic: 'ثِيثَا', trans: 'thiithaa', type: 'Combiné' }], hasSpecialCase: true, specialCaseTitle: "L'article ال - LA RÈGLE ESSENTIELLE", specialCaseExplanation: "RÈGLE IMPORTANTE:\n\n🎯 L'article ال (AL) = LE / LA / LES\n\n✅ UTILISATION:\n• Il s'attache DIRECTEMENT au nom\n• Il transforme un mot indéfini en défini\n• C'est l'article DÉFINI en arabe\n\n📖 EXEMPLES:\n• ثَمَرٌ = UNE FRUIT (indéfini)\n• الثَّمَرُ = LE FRUIT (défini avec ال)\n\n💡 PRONONCIATION:\nAtt-thamaru (on assimile le 'l' avec la consonne qui suit)\n\n⚠️ ATTENTION:\nLa 'alif' (ا) de 'al' disparaît à la prononciation!\n\n🎵 Écoute bien comment on prononce les 3 exemples avec ال:", specialCaseExercises: [{ title: "L'article ال - LE/LA/LES (défini)", description: "Quand on ajoute ال, le mot devient DÉFINI (spécifique)", examples: [{ arabic: 'الثَّمَرُ', trans: 'ath-thamaru', meaning: '🎯 LE FRUIT - Défini (spécifique)', image: '🍇' }, { arabic: 'البَيْتُ', trans: 'al-baytu', meaning: '🎯 LA MAISON - Défini (spécifique)', image: '🏠' }, { arabic: 'النَّاسُ', trans: 'an-naasu', meaning: '🎯 LES GENS - Défini (spécifique)', image: '👥' }] }], exerciseWords: [{ arabic: 'ثَبَ', latin: 'thaba', image: '📖' }, { arabic: 'بَثَ', latin: 'batha', image: '🐝' }, { arabic: 'ثِبِ', latin: 'thibi', image: '🎭' }, { arabic: 'تَثَ', latin: 'tatha', image: '🔔' }, { arabic: 'ثَتَ', latin: 'thata', image: '🍌' }, { arabic: 'ثِثِ', latin: 'thithi', image: '⭐' }] },
+            { dayNumber: 4, letter: 'ن', latinName: 'nun', exampleWord: 'نمل', exampleLatin: 'Naml', exampleImage: '🐜', forms: { isolated: 'ن', beginning: 'نـ', middle: 'ـنـ', end: 'ـن' }, harakatExamples: [{ arabic: 'نَ', trans: 'na' }, { arabic: 'نُ', trans: 'nou' }, { arabic: 'نِ', trans: 'ni' }, { arabic: 'نْ', trans: 'n' }, { arabic: 'نٍ', trans: 'nin' }], hasElongation: true, elongationExercises: [{ arabic: 'نَا', trans: 'naa', type: 'Fat7a' }, { arabic: 'نُو', trans: 'nou', type: 'Damma' }, { arabic: 'نِي', trans: 'nii', type: 'Kasra' }, { arabic: 'نَانِي', trans: 'naanii', type: 'Combiné' }, { arabic: 'نُونِيَا', trans: 'nouniaa', type: 'Combiné' }, { arabic: 'نِينَا', trans: 'niinaa', type: 'Combiné' }], hasChedda: true, cheddaTitle: "La CHEDDA (شَدَّة) - DOUBLER LA CONSONNE", cheddaExplanation: "RÈGLE IMPORTANTE:\n\n🎯 La CHEDDA (شَدَّة) = Petit point épais\n\n✅ SIGNIFICATION:\n• La consonne est DOUBLÉE\n• On la prononce DEUX FOIS d'affilée\n• Elle change le sens du mot!\n\n📖 EXEMPLES:\n• بَيَّنَ (bayyana) = CLARIFIER (with chedda)\n• بَيَنَ (bayana) = ENTRE (without chedda)\n\n💡 PRONONCIATION:\nOn prononce la consonne DEUX fois:\n• نَبَّتَ = na-BBA-ta (double BB)\n• يَنَّ = YA-NNA (double NN)\n\n🎵 Écoute bien les 4 exemples - tu vas ENTENDRE la différence!\n\n⚠️ TRÈS IMPORTANT:\nLa chedda change complètement la prononciation ET le sens!", cheddaExercises: [{ arabic: 'نَبَّتَ', trans: 'nabbata', meaning: '🎯 FAIRE POUSSER (N+BB+a+ta)', image: '🌱' }, { arabic: 'يَنَّ', trans: 'yanna', meaning: '🎯 DEVENIR MÛR (Y+NN+a)', image: '🍎' }, { arabic: 'بَيَّنَ', trans: 'bayyana', meaning: '🎯 CLARIFIER (B+YY+a+na)', image: '💡' }, { arabic: 'تَبَنَّى', trans: 'tabannaa', meaning: '🎯 ADOPTER (T+b+NN+aa)', image: '👶' }], exerciseWords: [{ arabic: 'نَبْتَ', latin: 'nabta', image: '🌳' }, { arabic: 'بِنْتٌ', latin: 'bintun', image: '👧' }, { arabic: 'ثَبِتَ', latin: 'thabita', image: '🪨' }, { arabic: 'تَنْبِيهٌ', latin: 'tanbih', image: '🔔' }, { arabic: 'نَتْوَ', latin: 'natwa', image: '📍' }, { arabic: 'بَنَاءٌ', latin: 'bana', image: '🏗️' }] },
             { dayNumber: 5, letter: 'ي', latinName: 'ya', exampleWord: 'يد', exampleLatin: 'Yad', exampleImage: '✋', forms: { isolated: 'ي', beginning: 'يـ', middle: 'ـيـ', end: 'ـي' }, harakatExamples: [{ arabic: 'يَ', trans: 'ya' }, { arabic: 'يُ', trans: 'you' }, { arabic: 'يِ', trans: 'yi' }, { arabic: 'يْ', trans: 'y' }, { arabic: 'يٍ', trans: 'yin' }], hasElongation: true, elongationExercises: [{ arabic: 'يَا', trans: 'yaa', type: 'Fat7a' }, { arabic: 'يُو', trans: 'you', type: 'Damma' }, { arabic: 'يِي', trans: 'yii', type: 'Kasra' }, { arabic: 'يَايِي', trans: 'yaayii', type: 'Combiné' }, { arabic: 'يُويِيَا', trans: 'youwiaa', type: 'Combiné' }, { arabic: 'يِييَا', trans: 'yiiyaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'يَدٌ', latin: 'yad', image: '✋' }, { arabic: 'بَيْتٌ', latin: 'bayt', image: '🏠' }, { arabic: 'ثَوْبٌ', latin: 'thawb', image: '👗' }, { arabic: 'نَيِّلٌ', latin: 'nayl', image: '🦁' }, { arabic: 'يَبِيسٌ', latin: 'yabis', image: '🏜️' }, { arabic: 'بِيَانٌ', latin: 'bayan', image: '📜' }] },
             { dayNumber: 6, letter: 'م', latinName: 'mim', exampleWord: 'ملك', exampleLatin: 'Malik', exampleImage: '👑', forms: { isolated: 'م', beginning: 'مـ', middle: 'ـمـ', end: 'ـم' }, harakatExamples: [{ arabic: 'مَ', trans: 'ma' }, { arabic: 'مُ', trans: 'mou' }, { arabic: 'مِ', trans: 'mi' }, { arabic: 'مْ', trans: 'm' }, { arabic: 'مٍ', trans: 'min' }], hasElongation: true, elongationExercises: [{ arabic: 'مَا', trans: 'maa', type: 'Fat7a' }, { arabic: 'مُو', trans: 'mou', type: 'Damma' }, { arabic: 'مِي', trans: 'mii', type: 'Kasra' }, { arabic: 'مَامِي', trans: 'maami', type: 'Combiné' }, { arabic: 'مُومِيَا', trans: 'moumiaa', type: 'Combiné' }, { arabic: 'مِيمَا', trans: 'miimaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'مَاءٌ', latin: 'maa', image: '💧' }, { arabic: 'مِيمٌ', latin: 'mim', image: '🔤' }, { arabic: 'يَمِينٌ', latin: 'yamin', image: '👉' }, { arabic: 'نِيَامٌ', latin: 'niyam', image: '😴' }, { arabic: 'تَمِيمٌ', latin: 'tamim', image: '💎' }, { arabic: 'بُطُومٌ', latin: 'butum', image: '🌲' }] },
             { dayNumber: 7, letter: 'ش', latinName: 'shin', exampleWord: 'شمس', exampleLatin: 'Shams', exampleImage: '☀️', forms: { isolated: 'ش', beginning: 'شـ', middle: 'ـشـ', end: 'ـش' }, harakatExamples: [{ arabic: 'شَا', trans: 'shaa' }, { arabic: 'شُو', trans: 'shou' }, { arabic: 'شِي', trans: 'shii' }, { arabic: 'شْ', trans: 'sh' }, { arabic: 'شٍ', trans: 'shin' }], hasElongation: true, elongationExercises: [{ arabic: 'شَا', trans: 'shaa', type: 'Fat7a' }, { arabic: 'شُو', trans: 'shou', type: 'Damma' }, { arabic: 'شِي', trans: 'shii', type: 'Kasra' }, { arabic: 'شَاشِي', trans: 'shaashii', type: 'Combiné' }, { arabic: 'شُوشِيَا', trans: 'shoushiaa', type: 'Combiné' }, { arabic: 'شِيشَا', trans: 'shiishaa', type: 'Combiné' }], exerciseWords: [{ arabic: 'شَمْسٌ', latin: 'shams', image: '☀️' }, { arabic: 'شِيْمَةٌ', latin: 'shima', image: '✨' }, { arabic: 'مَشَتٌ', latin: 'mashat', image: '🚶' }, { arabic: 'يَشِينُ', latin: 'yashin', image: '😔' }, { arabic: 'شَبِيبَةٌ', latin: 'shabiba', image: '🌙' }, { arabic: 'ثَيْشَمٌ', latin: 'thaysham', image: '🎪' }] },
@@ -1419,6 +1281,8 @@ function unlockAudio() {
                     { arabic: 'الْمَغْضُوبِ', transliteration: 'Al-maghdūbi', latin: 'Al-maghdūbi=ceux qui ont subi Ta colère' },
                     { arabic: 'غَيْرِ', transliteration: 'Ghayri', latin: 'Ghayri=non pas…' }
                 ]
+        // Bouton Réinitialiser pour le jour 30
+        ,hasResetButton: true
             }
         ];
 
@@ -1583,6 +1447,17 @@ function unlockAudio() {
             return html;
         }
 
+
+    function resetAllProgress() {
+        if (confirm('⚠️ ATTENTION !\n\nCela va EFFACER toute ta progression.\nTu devras recommencer depuis le JOUR 1.\n\nEs-tu sûr(e) ?')) {
+            localStorage.removeItem('completedDays');
+            completedDays = [];
+            renderBadges();
+            updateProgress();
+            alert('✅ Ton application a été réinitialisée !\n\nTu peux recommencer dès maintenant. Bonne chance ! 🚀');
+            renderDay(0);  // Retourner au jour 1
+        }
+    }
         function speakArabic(text) { if ('speechSynthesis' in window) { speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'ar-SA'; utterance.rate = 0.8; utterance.pitch = 1; utterance.volume = 1; speechSynthesis.speak(utterance); } }
 
         setLogos();
@@ -1592,68 +1467,5 @@ function unlockAudio() {
         // Initialize app when DOM is ready
         ensureDOMReady();
     </script></script>
-
-    <script>
-        // Enregistrer le service worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('data:application/javascript,' + encodeURIComponent(`
-                self.addEventListener('install', event => {
-                    event.waitUntil(caches.open('horizon-v1').then(cache => {
-                        console.log('Cache créé');
-                    }));
-                    self.skipWaiting();
-                });
-
-                self.addEventListener('activate', event => {
-                    event.waitUntil(
-                        caches.keys().then(cacheNames => {
-                            return Promise.all(
-                                cacheNames.map(cacheName => caches.delete(cacheName))
-                            );
-                        })
-                    );
-                    self.clients.claim();
-                });
-
-                self.addEventListener('fetch', event => {
-                    event.respondWith(
-                        caches.match(event.request).then(response => {
-                            return response || fetch(event.request).catch(() => {
-                                return new Response('Offline', { status: 503 });
-                            });
-                        })
-                    );
-                });
-            `)).catch(err => console.log('SW registration failed:', err));
-        }
-
-        // Demander la permission d'installer l'app
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            console.log('PWA prête à être installée');
-        });
-
-        // Ajouter un bouton "Installer" sur la page d'accueil
-        window.addEventListener('load', () => {
-            if (deferredPrompt) {
-                const installBtn = document.createElement('button');
-                installBtn.textContent = '⬇️ Installer l'app';
-                installBtn.style.cssText = 'position: fixed; top: 80px; right: 20px; padding: 10px 15px; background: #1a9b8e; color: white; border: none; border-radius: 8px; cursor: pointer; z-index: 1000; font-size: 14px; font-weight: bold;';
-                installBtn.onclick = () => {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then(choiceResult => {
-                        if (choiceResult.outcome === 'accepted') {
-                            console.log('App installée');
-                        }
-                        deferredPrompt = null;
-                        installBtn.remove();
-                    });
-                };
-                document.body.appendChild(installBtn);
-            }
-        });
-    </script>
 </body>
 </html>
